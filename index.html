@@ -65,6 +65,839 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javase-day09" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day09/" class="article-date">
+  <time datetime="2019-08-06T19:10:53.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day09/">javase_day09</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day09/" data-id="cjyzqcmdf0009hsnx2zwpbdxq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day08" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day08/" class="article-date">
+  <time datetime="2019-08-06T19:10:48.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day08/">javase_day08</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this关键字、方法的传参过程和递归调用、封装、static关键字"><a href="#this关键字、方法的传参过程和递归调用、封装、static关键字" class="headerlink" title="this关键字、方法的传参过程和递归调用、封装、static关键字"></a>this关键字、方法的传参过程和递归调用、封装、static关键字</h1><p>2019/8/6  9:38:40</p>
+<hr>
+<h2 id="this关键字（原理、理解）"><a href="#this关键字（原理、理解）" class="headerlink" title="this关键字（原理、理解）"></a>this关键字（原理、理解）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>若在构造方法中出现this关键字，则代表当前正在构造的对象；
+若在成员方法中出现this关键字，则代表当前正在调用的对象；</code></pre><h3 id="使用形式"><a href="#使用形式" class="headerlink" title="使用形式"></a>使用形式</h3><pre><code>（1）当形参变量名和成员变量名同名时，在方法体中会优先使用形参变量，若希望使用
+    成员变量则需要在变量名的前面加上this.的前缀明确要求使用成员变量（掌握）
+（2）在构造方法的第一行可以使用this()的方式调用本类中的其它结构方法（了解）</code></pre><h2 id="方法的传参过程和递归调用"><a href="#方法的传参过程和递归调用" class="headerlink" title="方法的传参过程和递归调用"></a>方法的传参过程和递归调用</h2><h3 id="方法的传参过程（原理、理解）"><a href="#方法的传参过程（原理、理解）" class="headerlink" title="方法的传参过程（原理、理解）"></a>方法的传参过程（原理、理解）</h3><pre><code>（1）main方法是程序的入口，先为main方法中变量申请内存空间并初始化；
+（2）调用max方法时，为max方法的形参变量申请内存空间；
+（3）将实参变量的数值赋值给形参变量，然后执行max的方法体；
+（4）当max方法体结束后，释放max方法形参变量所占的内存空间；
+（5）main方法得到max方法的返回值后继续向下执行；
+（6）当main方法结束后，释放main方法中局部变量的内存空间；</code></pre><h3 id="要求大家掌握的内容"><a href="#要求大家掌握的内容" class="headerlink" title="要求大家掌握的内容"></a>要求大家掌握的内容</h3><pre><code>a.当基本数据类型的变量作为参数传递时，形参变量数组的改变通常不影响实参变量
+b.当引用数据类型的变量作为参数传递时，形参变量指向的内容发生改变后会影响到实参变量指向的内容
+c.当引用数据类型的变量作为参数传递时，若形参变量改变指向后再改变指向的内容通常不会影响到实参变量指向的内容；</code></pre><h3 id="方法的递归调用（重点、难点）"><a href="#方法的递归调用（重点、难点）" class="headerlink" title="方法的递归调用（重点、难点）"></a>方法的递归调用（重点、难点）</h3><pre><code>（1）基本概念
+    递归主要指在方法体的内部调用当前方法身前的形式。
+
+案例：
+    自定义成员方法实现参数n的阶乘计算并返回。
+解析：
+    5！=5*4*3*2*1；
+    4！=4*3*2*1；
+    3！=3*2*1；
+    2！=2*1；
+    1！=1；
+
+    n!=n*(n-1)*(n-2)*...*1;
+解析：
+    5！=5*4!;
+    4!=4*3!;
+    3!=3*2!;
+    2!=2*1!;
+    1!=1;
+
+    n!=n*(n-1)!;
+    n=1时，return 1;
+
+（2）使用原则
+    a.必须找到递归的规律以及退出条件；
+    b.使用递归必须使得问题简单化而不是复杂化；
+    c.若递归影响到程序的执行性能，则使用递推取代之；</code></pre><h2 id="封装（重中之重）"><a href="#封装（重中之重）" class="headerlink" title="封装（重中之重）"></a>封装（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>通常情况下可以给成员变量赋值合法但不合理的数值，
+无论编译阶段还是运行阶段都不会报错或给出提示，此时与现实生活不符。
+为了避免上述错误的发生，需要对成员变量进行密封包装处理，
+从而隐藏类中代码的细节以及保证成员变量值的合理性，该机制就叫做 封装。</code></pre><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><pre><code>（1）私有化成员变量，使用private关键字修饰；
+（2）提供公有的get和set方法，在方法体中进行合理值的判断；
+（3）在构造方法中调用set方法进行合理值判断；</code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.    重点掌握Car.java文件的代码(20遍)
+2.    分别使用递归和递推的方式计算费氏数列中第n项数值并返回(参考PPT)
+3.    提示用户输入班级的学生人数以及每个学生的信息，学生的信息有：学号、姓名、
+    年龄，最后分别打印出来。
+    提示：
+        Student[] arr = new Student[num];
+4.    编程实现Person类的封装，特征有：姓名、年龄、国籍
+    编程实现PersonTest类，在main方法中使用有参方式创建两个对象并打印特征</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day08/" data-id="cjyzqcmde0008hsnx7u1bi4bj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day07" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day07/" class="article-date">
+  <time datetime="2019-08-06T19:10:43.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day07/">javase_day07</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="成员方法、构造方法和方法重载"><a href="#成员方法、构造方法和方法重载" class="headerlink" title="成员方法、构造方法和方法重载"></a>成员方法、构造方法和方法重载</h1><p>2019/8/5 8:56:47</p>
+<hr>
+<h2 id="成员方法（重中之重）"><a href="#成员方法（重中之重）" class="headerlink" title="成员方法（重中之重）"></a>成员方法（重中之重）</h2><h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><pre><code>class 类名{
+    返回值类型 成员方法名（形参列表）{
+        成员方法体；
+    }
+}
+如：
+    class Person{
+        void show(){
+            System.out.println(&quot;没事出来秀一下&quot;);
+        }
+    }
+注意：
+    当成员方法名由多个单词组成时，通常要求从第二个单词起首字母大写。</code></pre><h3 id="方法的详解"><a href="#方法的详解" class="headerlink" title="方法的详解"></a>方法的详解</h3><pre><code>（1）返回值类型
+    返回值主要指从方法体内向方法体外返回的数组内容。
+    返回值类型主要指返回值的数据类型，可以是基本数据类型，也可以是引用数据类型
+    如：
+        当返回的数据内容为66时，则返回值类型写int 即可
+        当返回的数据内容为3.14时，则返回值类型写double 即可
+        当返回的数据内容为&quot;hello&quot;时，则返回值类型写String 即可
+    在方法体中使用return 关键字实现数值的返回并结束当前方法。
+
+    如：
+        当返回的数据内容为66时，则方法体中写 return 66 即可;
+        当返回的数据内容为3.14时，则方法体中写 return 3.14 即可;
+        当返回的数据内容为num时，则方法体中写 return num 即可;
+    若该方法不需要返回任何数据内容时，则返回值类型写void即可。
+
+（2）形参列表
+    形式参数主要用于将方法体外的数据带入方法体的内部
+    形参列表表示可以有多个形式参数，语法格式：数据类型    形参1，数据类型    形参2，...
+    如：
+        当传入的数据内容为66时，则形参列表写为 int i即可；
+        当传入的数据内容为3.14时，则形参列表写为 double d即可；
+        当传入的数据内容为&quot;hello&quot;时，则形参列表写为 String s即可；
+        当传入的数据内容为66 和&quot;hello&quot;时，则形参列表写为 int i, String S即可；
+        当传入的数据内容为3.14 和&quot;hello&quot;时，则形参列表写为 double d,String s即可；
+    当该方法不需要传入任何数据内容时，则形参列表位置啥也不写即可。
+
+（3）成员方法体
+    成员方法中主要编写描述该方法功能的语句
+    如：
+        若该方法的功能时打印一句话时，则方法体中写：System.out.println(...);
+        若该方法的功能是找到最大值并返回时，则方法体中写：return ia&gt;ib？ia：ib;</code></pre><h3 id="方法的调用"><a href="#方法的调用" class="headerlink" title="方法的调用"></a>方法的调用</h3><pre><code>（1）语法格式
+    引用变量名 .成员变量名（实参列表）;
+如：
+    p.show(); - 表示使用引用变量p调用名字为show 的成员方法
+
+（2）注意事项
+    a.实际参数列表主要用于对形式参数列表进行赋值操作，因此参数的类型、参数的个数
+    以及参数的顺序必须保持一致；
+    b.实际参数可以传递直接量、变量、表达式、方法的调用等；</code></pre><h2 id="构造方法和方法重载"><a href="#构造方法和方法重载" class="headerlink" title="构造方法和方法重载"></a>构造方法和方法重载</h2><pre><code>如：
+    Person p =new Person();        - 表示声明Person类型的引用指向Person类型的对象
+    p.show();                    - 表示调用名字为show的方法</code></pre><h3 id="构造方法（重中之重）"><a href="#构造方法（重中之重）" class="headerlink" title="构造方法（重中之重）"></a>构造方法（重中之重）</h3><pre><code>（1）语法格式
+    class 类名{
+        类名（形参列表）{
+            构造方法体；
+        }
+    }
+如：
+    class Person{
+        Person(){
+        }
+    }
+（2）注意事项
+    a.构造方法的名称与类名相同并且没有返回值类型，连void都不许有；
+    b.当使用new关键字创建对象时会自动调用构造方法来实现成员变量的初始化 工作；
+
+（3）默认构造方法
+    a.当一个类没有自定义构造方法时，编译器会自动添加一个无参的空构造方法，
+      叫做默认/缺省构造方法，如：Person(){}
+    b.若类中出现自定义构造方法，则编译不再提供任何形式的构造方法</code></pre><h3 id="方法的重载（Overload-会用即可）"><a href="#方法的重载（Overload-会用即可）" class="headerlink" title="方法的重载（Overload 会用即可）"></a>方法的重载（Overload 会用即可）</h3><pre><code>（1）基本概念
+    在Java语言中方法名相同、参数列表不同的方法之间构成重载关系。
+
+（2）方法重载的主要形式为：参数的个数不同、参数的类型不同、参数的顺序不同
+    与形参变量名以及返回值类型无关，但返回值类型最好相同。
+    判断能否重载的核心，调用能否区分。
+
+（3）实际意义
+    方法重载的实际意义在于调用者只需要记住一个方法名就可以调用各种不同的版本，
+    从而实现各种不同的效果。
+    如：
+        char c1 =&apos;a&apos;;
+        System.out.println(c1);
+        int i1 =10;
+        System.out.println(i1);
+        double d1 =3.14    
+        System.out.println(d1);
+        ... ...</code></pre><h3 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h3><pre><code>（1）自定义Point类，特征有：横坐标和纵坐标，行为有：打印所有特征的数值
+    要求再main方法中声明Point类型的引用指向Point类型的对象并调用方法打印特征
+    再将特征修改为3和5后再次调用方法打印特征
+
+    自定义成员方法实现将横坐标修改为参数指定的数值
+    自定义成员方法实现将纵坐标修改为参数指定的数值
+
+    自定义成员方法实现获取横坐标的数值并返回的行为
+    自定义成员方法实现获取纵坐标的数值并返回的行为
+
+（2）编程实现Girl类，特征有：姓名、年龄、是否有男朋友，行为有：
+    无参构造方法、有参构造方法、打印所有特征的方法。
+    要求在main方法中分别使用无参和有参方式构造对象并打印特征
+
+（3）编程实现Worker类，特征有：姓名、年龄、薪水，行为有：
+    无参构造方法、有参构造方法、打印所有特征的方法、实现获取姓名并返回的方法、
+    修改姓名为参数指定数值的方法、获取年龄并返回的方法、修改年龄为参数指定数值的方法、
+    获取薪水并返回的方法、修改薪水为参数指定数值的方法、实现薪水增加500元的行为、
+    实现薪水增加参数指定数值的行为。要求在main方法中分别使用无参和有参方式构造对象并打印特征、
+    最后使用有参方式构造的对象调用上述方法测试。    </code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>（1）重点理解和掌握Worker.java文件的所有代码，至少敲20遍。
+（2）自定义Car类，特征有：品牌(brand)、颜色(color)、价格(price)，行为有：
+    无参构造、三个参数的构造、打印所有特征的行为、获取品牌并返回的行为、获取颜色并返回的行为、
+    获取价格并返回的行为、设置品牌为参数指定的数值、设置颜色为参数指定的数值、
+    设置价格为参数指定的数值、实现价格增长1000元的行为、实现价格增长参数指定数值的行为。
+    要求在main()方法中使用无参形式构造对象打印特征，再使用有参形式构造对象打印特征
+    并使用有参形式构造的对象调用其他方法测试。 </code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day07/" data-id="cjyzqcmdd0007hsnxzz8q90xj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day06/" class="article-date">
+  <time datetime="2019-08-06T19:10:38.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day06/">javase_day06</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="二维数组、面向对象编程的概念"><a href="#二维数组、面向对象编程的概念" class="headerlink" title="二维数组、面向对象编程的概念"></a>二维数组、面向对象编程的概念</h1><p>2019/8/2 14:02:20</p>
+<hr>
+<h2 id="二维数组（会用即可）"><a href="#二维数组（会用即可）" class="headerlink" title="二维数组（会用即可）"></a>二维数组（会用即可）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>    当需要在程序中记录多个数据内容时，则声明一个一维数组即可，
+而一维数组本质上就是在内存中申请一段连续的存储单元。
+    二维数组本质上就是由多个一维数组摞在一起组成的数组，也就是说二维数组
+中的每个元素都是一个一维数组，而一维数组中的每个元素才是数据内容。</code></pre><h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><pre><code>（1）语法格式
+    数据类型[][] 数组名称=new 数据类型[行数][列数];
+如：
+    int[][] arr = new int[2][3];  - 表示声明具有2行3列元素类型为int的二维数组
+    其中行下标范围是：0 ~ 1；
+    其中列下标范围是：0 ~ 2；
+
+（2）元素初始化
+    数据类型[][] 数组名称 = {{初始值1,初始值2,...},...};
+	如：
+		int[][] arr = {{1, 2, 3}, {4, 5, 6}}; - 表示声明具有2行3列的二维数组</code></pre><h2 id="面向对象编程的概念（理解）"><a href="#面向对象编程的概念（理解）" class="headerlink" title="面向对象编程的概念（理解）"></a>面向对象编程的概念（理解）</h2><h3 id="什么是对象？"><a href="#什么是对象？" class="headerlink" title="什么是对象？"></a>什么是对象？</h3><pre><code>万物皆对象</code></pre><h3 id="什么是面向对象？"><a href="#什么是面向对象？" class="headerlink" title="什么是面向对象？"></a>什么是面向对象？</h3><pre><code>面向对象就是指以属性（特征）和行为的观点分析现实世界中事物的方式。</code></pre><h3 id="什么是面向对象编程？"><a href="#什么是面向对象编程？" class="headerlink" title="什么是面向对象编程？"></a>什么是面向对象编程？</h3><pre><code>面向对象编程就是指先以面向对象的方式进行分析，再使用面向对象的编程语言进行翻译的过程；
+其中c语言是一门面向过程的编程语言；
+其中c++语言是一门即面向过程又面向对象的编程语言；
+其中Java语言是一门纯面向对象的编程语言。</code></pre><h2 id="类和对象以及应用（重中之重、抽象、难点）"><a href="#类和对象以及应用（重中之重、抽象、难点）" class="headerlink" title="类和对象以及应用（重中之重、抽象、难点）"></a>类和对象以及应用（重中之重、抽象、难点）</h2><h3 id="类和对象的概念"><a href="#类和对象的概念" class="headerlink" title="类和对象的概念"></a>类和对象的概念</h3><pre><code>    对象主要指现实生活中客观存在的实体，在Java语言中体现为内存中的一块存储区域
+    类简单来说是“分类”的含义，是多个对象共性提取的抽象描述，在Java语言中体现为
+一种引用数据类型，里面包含了描述特征的成员变量以及描述行为的成员方法。</code></pre><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><pre><code>（1）类定义的语法格式
+    class 类名{
+        类体；
+    }
+    如：
+    class Person{
+    }
+注意：
+    当类名由多个单词组成时，通常要求每个单词的首字母都要大写。
+
+（2）成员变量定义的语法格式
+class 类名{
+    数据类型 成员变量名 = 初始值； - 其中=初始值通常都省略
+    ...
+}
+如：
+    class Person{
+        String name;
+        int age;
+    }
+注意：
+    当成员变量名由多个单词组成时，通常要求从第二个单词起首字母大写。
+思考：
+    成员变量和局部变量有何区别？
+解析：
+    成员变量 - 定义在类体内方法体外的变量，作用范围从定义开始到整个类体结束
+    局部变量 - 定义在方法体内的变量，作用范围从定义开始到整个方法体结束</code></pre><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><pre><code>（1）语法格式
+    new 类名（）；
+如：
+    new Person(); - 表示创建Persin类型对象，由于该对象没有指定名称，叫匿名对象
+
+（2）注意事项
+    a.使用new关键字创建对象的过程，叫做类的实例化；
+    b.创建对象的本质就是在内存空间的堆区申请一块存储区域，用于记录该对象独有的特征信息。</code></pre><h3 id="引用的定义"><a href="#引用的定义" class="headerlink" title="引用的定义"></a>引用的定义</h3><pre><code>（1）基本概念
+    使用引用数据类型定义的变量叫做 引用型变量，简称为引用；
+    引用变量通常用于记录对象在堆区中的内存地址信息，便于下次访问
+
+（2）语法格式
+    类名 引用变量名
+如：
+    Person p; - 表示定义Person类型的引用
+    Person p = new Person(); - 表示声明Person类型的引用指向Person类型的对象
+
+    引用的变量名.成员变量名；
+如：
+    p.name=&quot;zhangfei&quot;;</code></pre><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><pre><code>（1）编程实现Point类，特征有：横坐标(x)和纵坐标(y)，要求在main方法
+    声明Point引用指向Point对象并打印特征，修改特征为3和5后再次打印</code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.    要求重点理解一维数组的增删改查以及Person.java文件的代码，
+    其中Person类的代码至少敲20遍。
+2.    自定义Phone类，特征有：品牌和价格，行为有：打印品牌和价格的方法，
+    要求在main()方法声明Phone类型的引用指向Phone类型的对象并打印特征，
+    将品牌和价格修改为&quot;Nokia&quot;和598后再次打印。</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day06/" data-id="cjyzqcmdc0006hsnx1hcnc4hq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day05/" class="article-date">
+  <time datetime="2019-08-06T19:10:32.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day05/">javase_day05</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="循环结构、一维数组"><a href="#循环结构、一维数组" class="headerlink" title="循环结构、一维数组"></a>循环结构、一维数组</h1><p>2019/8/1 14:03:13</p>
+<hr>
+<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><h3 id="双重循环（难点、重点）"><a href="#双重循环（难点、重点）" class="headerlink" title="双重循环（难点、重点）"></a>双重循环（难点、重点）</h3><pre><code>（1）语法格式
+    for(初始化表达式1；条件表达式2；修改初始值表达式3){
+        for(初始化表达式4；条件表达式5；修改初始值表达式6){
+            循环体
+        }
+    }
+
+（2）执行流程
+    执行表达式1=&gt;判断表达式2是否成立
+        =&gt;若成立，则执行表达式4=&gt;判断表达式5是否成立
+                =&gt;若成立，则执行循环体=&gt;执行表达式6=&gt;判断表达式5是否成立
+                =&gt;若不成立，则内层循环结束=&gt;表达式3=&gt;判断表达式2是否成立
+        =&gt;若不成立，则外层循环结束
+
+（3）注意事项
+    a.外层循环变量变一下，内层循环从头到尾跑一圈
+    b.当需要打印多行多列时，则需要使用双重for循环；</code></pre><h3 id="break关键字"><a href="#break关键字" class="headerlink" title="break关键字"></a>break关键字</h3><pre><code>在嵌套的循环结构中，break用于退出所在循环体
+如果要退出外层循环体，需要使用标号的方式
+    for(...){                        outer:for(...){
+        for(...){                            for(...){
+            break;                            break outer;        
+        }                                    }
+    }                                }</code></pre><h3 id="while循环（会用）"><a href="#while循环（会用）" class="headerlink" title="while循环（会用）"></a>while循环（会用）</h3><pre><code>（1）语法格式
+    while（条件表达式）{
+        循环体；
+    }
+（2）执行流程
+    判断条件表达式是否成立
+        =&gt;若成立，则执行循环体=&gt;判断条件表达式是否成立
+        =&gt;若不成立，则结束循环
+
+（3）注意事项
+    a.while循环和for循环都属于当型循环，完全可以互换；
+    b.while循环更善于明确循环条件但不明确循环次数的场合；
+      for循环通常更善于明确循环次数/循环范围的场合中；
+    c.while(true)和for(;;)都表示无限循环；</code></pre><h2 id="一维数组（重点）"><a href="#一维数组（重点）" class="headerlink" title="一维数组（重点）"></a>一维数组（重点）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>当需要在程序中记录单个数据内容时，则声明一个变量即可；
+当需要在程序中记录多个类型相同的数据内容时，则声明一个一维数组即可
+而一维数组本质上就是在内存中申请一段连续的存储单元；</code></pre><h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><pre><code>（1）语法格式
+    数据类型[] 数组名 =new 数据类型 [数组的长度]
+如：
+    int[] arr= new int[3];    - 表示声明一个长度为3元素类型为int类型的一维数组
+    int num =3;                - 表示声明一个初始值为3元素类型为int类型的变量
+    int arr[] = new int[3]    - 不推荐使用
+
+（2）元素初始化
+    数据类型[] 数组名={初始值1, 初始值2, ...};
+    如：
+        int[] arr = {11, 22, 33, 44, 55}; - 声明数组的同时指定元素的初始值</code></pre><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><pre><code>（1）提示用户输入一个正整数n，使用while循环实现1/1 + 1/2 + ...+1/n
+（2）使用双重for循环分别打印以下图案：
+   *****     *    i=1时，1个*   ***** i=1时，5个*                  *
+   *****     **   i=2时，2个*   ****  i=2时，4个*                 ***
+   *****     ***  i=3时，3个*   ***   i=3时，3个*                *****
+   *****     **** i=4时，4个*   **    i=4时，2个*               *******
+   *****     *****i=5时，5个*   *     i=5时，1个*              *********</code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.    重点掌握数组的声明和初始化方式
+2.    编程实现九九乘法表的打印(参考PPT)
+3.    声明一个长度为5元素类型为int类型的一维数组，打印数组中的所有元素值；
+     使用元素11、22、33、44分别对数组中的前四个元素赋值，再打印所有元素值；
+     将元素55插入到下标为0的位置，原有元素向后移动，再打印所有元素值；
+     再将元素55从数组中删除，删除方式为后续元素向前移动，最后位置置为0并打印；
+     查找数组中是否存在元素22，若存在则修改为220后再次打印所有元素；
+4.    声明一个初始值为11 22 33 44 55的一维数组并打印所有元素
+    声明一个长度为3元素类型为int类型的一维数组并打印所有元素
+    实现将第一个数组中间3个元素赋值到第二个数组中
+    再次打印第二个数组中的所有元素
+5.    编程统计用户输入任意一个正整数中每个数字出现次数的统计并打印。
+    如：123123  =&gt; 1出现2次，2出现2次，3出现2次
+6.    编程实现双色球抽奖游戏(参考PPT)。  </code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day05/" data-id="cjyzqcmda0005hsnxguen182j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day04" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day04/" class="article-date">
+  <time datetime="2019-08-06T19:10:27.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day04/">javase_day04</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分支结构、循环结构"><a href="#分支结构、循环结构" class="headerlink" title="分支结构、循环结构"></a>分支结构、循环结构</h1><p>2019/7/31 9:07:27</p>
+<hr>
+<h2 id="分支结构（重中之重）"><a href="#分支结构（重中之重）" class="headerlink" title="分支结构（重中之重）"></a>分支结构（重中之重）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>当需要在Java程序中做出判断并作出选择时，就可以使用分支结构加以描述。</code></pre><h3 id="if分支结构"><a href="#if分支结构" class="headerlink" title="if分支结构"></a>if分支结构</h3><pre><code>（1）语法格式
+    if（条件表达式）{
+        语句块；
+    }
+（2）执行流程
+    判断条件表达式是否成立
+        =&gt;若成立。则执行语句块；
+        =&gt;若不成立，则跳过语句块不执行；</code></pre><h3 id="if-else-分支结构"><a href="#if-else-分支结构" class="headerlink" title="if else 分支结构"></a>if else 分支结构</h3><pre><code>（1）语法格式
+    if（条件表达式）{
+        语句块1；
+    }
+    else{
+        语句块2；
+    }
+（2）执行流程
+    判断条件表达式是否成立
+        =&gt;若成立，则执行语句块1；
+        =&gt;若不成立，则执行语句块2；</code></pre><h3 id="if-else-if-else分支结构"><a href="#if-else-if-else分支结构" class="headerlink" title="if-else if-else分支结构"></a>if-else if-else分支结构</h3><pre><code>（1）语法格式
+    if（条件表达式1）{
+        语句块1；
+    }
+    else if（条件表达式2）{
+        语句块2；
+    }
+    ... ...
+    else{
+        语句块n;
+    }
+（2）执行流程
+    判断条件表达式1是否成立
+           =&gt; 若成立，则执行语句块1；
+           =&gt; 若不成立，则判断条件表达式2是否成立
+              =&gt; 若成立，则执行语句块2；
+              =&gt; 若不成立，则执行语句块n；</code></pre><h3 id="switch-case分支结构（了解）"><a href="#switch-case分支结构（了解）" class="headerlink" title="switch-case分支结构（了解）"></a>switch-case分支结构（了解）</h3><pre><code>（1）语法格式
+    switch(变量/表达式){
+       case 直接量1: 语句块1; break;
+       case 直接量2: 语句块2; break;
+       ... ...
+       default: 语句块n;
+  }
+（2）执行流程
+     计算变量/表达式的数值 =&gt; 判断是否与直接量1匹配
+      =&gt; 若匹配，则执行语句块1 =&gt; 执行break跳出该结构；
+      =&gt; 若不匹配，则判断是否与直接量2匹配
+               =&gt; 若匹配，则执行语句块2 =&gt; 执行break跳出该结构；
+               =&gt; 若不匹配，则执行语句块n;      
+（3）注意事项(笔试题)
+    switch()中支持的类型有：byte、short、char以及int类型
+    从jdk1.5开始支持枚举类型，从jdk1.7开始支持String类型。</code></pre><h2 id="循环结构（重中之重）"><a href="#循环结构（重中之重）" class="headerlink" title="循环结构（重中之重）"></a>循环结构（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>当需要在Java程序中重复执行一段代码时，就需要使用循环结构加以处理。</code></pre><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><pre><code>（1）语法格式
+    for（初始化表达式；条件表达式；修改初始值表达式）{
+        循环体；
+    }
+（2）执行流程
+    执行初始化表达式 =&gt; 判断条件表达式是否成立
+       =&gt; 若成立，则执行循环体 =&gt; 执行修改初始值表达式 =&gt; 判断条件表达式是否成立
+       =&gt; 若不成立，则循环结束</code></pre><h3 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h3><pre><code>break关键字可以用在switch-case分支结构和循环结构中，用于跳出当前循环
+continue关键字可以用在循环结构中表示结束本次循环继续下一次循环(熟悉)</code></pre><h3 id="特殊的循环"><a href="#特殊的循环" class="headerlink" title="特殊的循环"></a>特殊的循环</h3><pre><code>for(;;) - 这种没有循环条件的循环叫做无限循环，俗称“死循环”；
+        - 使用break关键字搭配使用</code></pre><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><pre><code>（1）使用for循环实现1 ~ 10000之间累加和的计算并打印   50005000
+（2）提示用户输入一个整数，使用上述结构判断是正数、负数还是零
+（3）提示用户输入一个整数，使用if-else分支结构判断负数还是非负数
+（4）提示用户输入两个整数，使用if分支结构找到最大值并打印。 </code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.要求重点掌握if和for相关的所有案例代码。  
+2.求用户输入四个整数中的最大值并打印（参考PPT）
+3.根据用户输入的个人薪水来计算个人所得税并打印，其中个税起征点为5000元(参考PPT)
+ 个人所得税公式：应纳个人所得税税额=应纳税所得额×适用税率-速算扣除数
+4.出租车计费系统的实现（参考PPT）。   
+5.使用for循环打印三位数中的所有水仙花数(参考PPT)
+6.使用for循环实现将任意位数的正整数逆序输出。
+7.编程实现猜数字游戏(参考PPT)，其中生成随机数的代码为： 
+     import java.util.Random;
+     Random ra = new Random();
+     int num = ra.nextInt(100);  - 表示生成0 ~ 99之间的整数存放到变量num中
+8.提示用户输入一个整数，使用上述结构判断是正数、负数还是零(if-else if-else)
+9.提示用户输入两个整数，使用if分支结构找到最大值并打印。</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day04/" data-id="cjyzqcmd90004hsnxudnfn9fc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day03" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day03/" class="article-date">
+  <time datetime="2019-08-06T19:10:22.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day03/">javase_day03</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="字符类型、运算符"><a href="#字符类型、运算符" class="headerlink" title="字符类型、运算符"></a>字符类型、运算符</h1><p>2019/7/30 8:48:53</p>
+<hr>
+<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><pre><code>在Java语言中用于描述字符信息的类型有：char，如：&apos;1&apos;，&apos;a&apos;，&apos;中&apos;等...
+其中char类型占用内存空间的大小为2个字节，在以后的开发中char类型很少使用
+使用更多的是多个字符组成的字符串，使用&quot;&quot;括起来，并且用String类型加以描述
+为了使得字符能够有效地记录到计算机中，给每个字符指定了一个编号，叫做 ASCII值
+   要求大家记住的ASCII值有：
+       &apos;0&apos; - 48   &apos;A&apos; - 65   &apos;a&apos; - 97  空格 - 32  换行符 - 10
+   要求大家记住的转义字符有：
+       \&quot; - &quot;   \&apos; - &apos;  \\ - \   \t - 制表符(tab键)  \n - 换行符</code></pre><h3 id="基本数据类型之间的转换（尽量了解）"><a href="#基本数据类型之间的转换（尽量了解）" class="headerlink" title="基本数据类型之间的转换（尽量了解）"></a>基本数据类型之间的转换（尽量了解）</h3><pre><code>在Java语言中数据类型之间的转换分为两大类：
+自动类型转换 - 主要指从小范围到大范围之间的转换
+强制类型转换 - 主要指从大范围到小范围之间的转换
+        - 目标类型  变量名 = (目标类型)源类型的变量名
+        - byte b1 = (byte)s1;
+        - 在以后的开发中尽量少使用强制类型转换，因为可能会造成数据的丢失</code></pre><h2 id="运算符（重点）"><a href="#运算符（重点）" class="headerlink" title="运算符（重点）"></a>运算符（重点）</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><pre><code>+ 表示加法运算发        - 表示减法运算符        * 表示乘法运算符
+/ 表示除法运算符        % 表示取余运算符</code></pre><h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><pre><code>&gt;表示是否大于运算符        &gt;=表示是否大于等于运算符
+&lt;表示是否小于运算符        &lt;=表示是否小于等于运算符
+==表示是否等于运算符        ！=表示是否不等于运算符
+
+所有以关系运算符为最终运算的表达式结果都一定是boolean类型，只有true和false.</code></pre><h3 id="自增减运算符"><a href="#自增减运算符" class="headerlink" title="自增减运算符"></a>自增减运算符</h3><pre><code>+表示加法运算符        ++表示自增运算符，让变量自身的数值加1
+-表示减法运算符        --表示自减运算符，让变量自身的数值减1</code></pre><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><pre><code>&amp;&amp; 表示逻辑与运算符，相当于“并且”，同真为真，一假为假
+|| 表示逻辑或运算符，相当于“或者”，一真为真，同假为假
+！   表示逻辑非运算符，相当于“取反”，真为假，假为真
+
+短路特性：
+    对于逻辑与运算符来说，若第一个条件为假则整个表达式为假，此时第二个条件跳过
+    对于逻辑或运算符来说，若第一个条件为真则整个表达式为真，此时第二个条件跳过</code></pre><h3 id="条件-三目运算符"><a href="#条件-三目运算符" class="headerlink" title="条件/三目运算符"></a>条件/三目运算符</h3><pre><code>条件表达式？表达式1：表达式2；
+    =&gt;判断条件表达式是否成立
+        =&gt;若成立。则执行表达式1；
+        =&gt;若不成立，则执行表达式2；</code></pre><h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><pre><code>（1）简单赋值
+     = 表示赋值运算符，用于将=右边的数值赋值给=左边的变量，覆盖变量原本的内容，切记不要与==混淆。
+笔试题：
+    ia == 2;  - 表示判断ia的数值是否等于2
+    2 == ia;  - 表示判断2是否等于ia的数值，推荐该方法
+    ia = 2;   - 表示将数值2赋值给变量ia，覆盖ia原来的数值
+    2 = ia;   - 编译报错
+
+（2）复合赋值
+    +=、-=、*=、...</code></pre><h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><pre><code>a. ()的优先级极高；
+b. = 的优先级极低；
+c. 若实在不确定执行次序，则使用()来确保优先级；</code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.要求重点掌握所有运算符的符号和功能以及时间拆分的案例。
+2.提示用户输入一个三位数的正数，然后进行逆序处理再打印。
+如：
+    123 =&gt; 321  打印   
+3.使用三目运算符判断用户输入的整数是负数、正数还是零。</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day03/" data-id="cjyzqcmd70003hsnx5nqvgnjf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-day02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/javase-day02/" class="article-date">
+  <time datetime="2019-08-06T19:10:13.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/javase-day02/">javase_day02</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="变量和注释、数据类型"><a href="#变量和注释、数据类型" class="headerlink" title="变量和注释、数据类型"></a>变量和注释、数据类型</h1><p>2019/7/29 8:51:00</p>
+<hr>
+<h2 id="变量和注释（重中之重）"><a href="#变量和注释（重中之重）" class="headerlink" title="变量和注释（重中之重）"></a>变量和注释（重中之重）</h2><h3 id="变量的基本概念"><a href="#变量的基本概念" class="headerlink" title="变量的基本概念"></a>变量的基本概念</h3><pre><code>    当需要在Java程序中记录单个数据内容时，则声明一个变量即可，而变量的本质
+就是在内存中申请一块存储单元，由于该存储单元中的数据内容可以改变，因此得名
+为“变量”;
+    由于存放的数据内容大小不同导致所需存储单元的大小不同，在Java语言中使用数据
+类型的概念加以描述，为了便于下次访问就需要给存储单元指定一个名称，叫做变量名。</code></pre><h3 id="变量的声明方式"><a href="#变量的声明方式" class="headerlink" title="变量的声明方式"></a>变量的声明方式</h3><pre><code>数据类型 变量名 = 初始值； - 其中=初始值可以忽略，但分号不能省略
+如：
+int age = 18;
+int age;</code></pre><h3 id="标识符（变量名）的命名规则"><a href="#标识符（变量名）的命名规则" class="headerlink" title="标识符（变量名）的命名规则"></a>标识符（变量名）的命名规则</h3><pre><code>（1）要求由字母、数字、下划线以及美元$等组成，其中数字不能开头
+如：age、name、nianling、age2、name2等
+（2）要求不能与Java语言中关键字同名，所谓关键字就是Java语言中用于代表特殊含义的单词
+如：public class void int等
+（3）区分大小写，长度没有限制但不宜过长
+如：Day和day代表两个不同的变量名，不推荐使用
+（4）尽量做到见名知意，支持中文但不推荐使用
+如：year、month、day、hour、minute、second、size、time等</code></pre><h3 id="变量输入输出的优化"><a href="#变量输入输出的优化" class="headerlink" title="变量输入输出的优化"></a>变量输入输出的优化</h3><pre><code>import java.util.Scanner;
+public class VarIOTest{
+    public static void main(String[] args){
+    //1.声明两个变量用于记录姓名和年龄信息
+    //String name;
+    //int age;
+    //2.提示用户输入姓名和年龄信息并记录到上述变量中
+    System.out.println(&quot;请输入你的姓名年龄&quot;);
+    //创建扫描器来扫描键盘输入的内容
+    Scanner sc = new Scanner(System.in);
+    //读取一个字符串放到变量name中
+    String name = sc.next();
+    //读取一个整数放到变量age中
+    int age = sc.nextInt();    
+    //3.打印用户输入的姓名和年龄
+    //System.out.println(&quot;name=&quot;+name);
+    //System.out.println(&quot;age=&quot;+age);
+    System.out.println(&quot;name =&quot;+name+&quot;, age=&quot;+age);
+    }
+}</code></pre><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><pre><code>// - 表示单行注释，从//开始一直到本行末尾的所有内容都是注释
+/**/ - 表示多行注释，从/*开始一直到*/之间的所有内容都是注释
+注意：
+    多好注释不允许嵌套使用！</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本分类（记住）"><a href="#基本分类（记住）" class="headerlink" title="基本分类（记住）"></a>基本分类（记住）</h3><pre><code>在Java语言中将数据类型分为两大类：
+（1）基本数据类型（记住）
+    byte、short、int、long、float、double、boolean、char
+    1个       2个     4个     8个    4个        8个        1个        2个
+（2）引用数据类型（了解）
+    数组、类、接口、标注、枚举</code></pre><h3 id="常用的进制"><a href="#常用的进制" class="headerlink" title="常用的进制"></a>常用的进制</h3><pre><code>在现实生活中通常采用十进制，逢十进一，十进制的权重：10`0、10`1、...
+在计算机的底层采用二进制，逢二进一，二进制权重：2`0、2`1、...
+其中二进制的最高位（最左边）代表符号位，若该位时0则表示非负数，若该位是1则表示负数。
+如：
+10`3    10`2    10`1    10`0
+ 千        百        十        个
+1        2        3        4        =&gt;读作：一千两百三十四</code></pre><h3 id="常用的进制转换（尽量理解、原理）"><a href="#常用的进制转换（尽量理解、原理）" class="headerlink" title="常用的进制转换（尽量理解、原理）"></a>常用的进制转换（尽量理解、原理）</h3><pre><code>（1）正的十进制转换成二进制的方式
+    a.除2取余法，让十进制整数不断的除以2并取出余数，直到商为0时将余数逆序排列
+    b.拆分法，将十进制整数拆分为若干个二进制权重的和，若由该权重下面写1否则写0
+        如：
+            45=&gt;32+8+4+1
+
+                128    64    32    16    8    4    2    1
+                0    0    1    0    1    1    0    1    =&gt;0010 1101
+
+（2）正二进制转换为十进制的方式
+    a.加权法，让二进制中的每个数字乘以当前位的权重在累加起来
+        如：
+        0010 1101=&gt;0*2`7+0*2`6+1*2`5+0*2`4+1*2`3+1*2`2+0*2`1+1*2`0
+                 =&gt;0+0+32+0+8+4+0+1
+                 =&gt;45
+
+（3）负十进制转换为二进制的方式
+    a.先将十进制整数的绝对值转换为二进制，在进行按位取反加1
+    如：
+        -45 =&gt;绝对值转换为二进制： 0010 1101
+            =&gt;进行按位取反：          1101 0010
+            =&gt;再加1：             1101 0011
+        -45 + 45 =0；
+            -45： 1101 0011
+            +45： 0010 1101    +
+            -----------------
+               1 0000 0000（高位溢出、丢弃，结果是：0）
+
+（4）负二进制转换为十进制的方式
+    a.先减1再进行按位取反，最后合并为十进制整数后增加负号
+    如：
+        1101 0011 =&gt;先减一：        1101 0010
+                  =&gt;按位取反：    0010 1101
+                  =&gt;合并十进制：  45
+                  =&gt;添加负号：    -45</code></pre><h3 id="单个字节表示的整数范围（重中之重）"><a href="#单个字节表示的整数范围（重中之重）" class="headerlink" title="单个字节表示的整数范围（重中之重）"></a>单个字节表示的整数范围（重中之重）</h3><pre><code>在计算机中单个字节表示8位二进制，其中最高位（最左边）代表符号位
+若该位是0代表非负数，若该位是1则代表负数，因此单个字节表示的整数范围如下：
+非负数的范围：    0000 0000~0111 1111 =&gt;0~2`7-1=&gt;0~127
+0111 1111 =&gt;0*128+1*64+1*32+1*16+1*8+1*4+1*2+1*1
+          =&gt;0+64+32+16+8+4+2+1
+          =&gt;127
+负数的范围：        1000 0000~1111 1111 =&gt;
+1000 0000 =&gt;先减1：        0111 1111
+          =&gt;按位取反：    1000 0000
+          =&gt;转十进制：    128
+          =&gt;添加负号：    -128
+1111 1111 =&gt;先减1：        1111 1110
+          =&gt;按位取反：    0000 0001
+          =&gt;转十进制：    1
+          =&gt;添加负号：    -1
+综上所述：
+    计算机中单个字节所能表示的整数范围是：-2`7~2`7-1,也就是-128~127.</code></pre><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><pre><code>在Java语言中用于描述整数数据的数据类型由：byte、short、int、long,推荐int
+其中byte类型在内存空间中占1个字节，表示的整数范围是：-2`7~2`7-1
+                                                  -128~127
+其中short类型在内存空间中占2个字节，表示的整数范围是：-2`15~2`15-1
+                                                  -32768~32767
+其中int类型在内存空间中占4个字节，表示的整数范围是：-2`31~2`31-1
+                                                  正负二十一亿
+其中long类型在内存空间中占8个字节，表示的整数范围是：-2`63~2`63-1
+                                                  比int类型还大的数
+在Java程序中直接写出的整数数据叫做 直接量/字面值/常量，如：66，默认为int类型
+若希望表达更大的直接量，则需要在直接量的后面加上l或者L，推荐使用L。
+扩展：
+    若希望表达比long类型还大的数据，则借助java.math.BigInteger类型加以描述。</code></pre><h3 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h3><pre><code>在Java语言中用于描述小数数据的类型有：float、double，推荐使用double类型
+其中float类型在内存空间中占4个字节，叫做单精度浮点数，小数点后通常有效到7位
+其中double类型在内存空间中占8个字节，叫做双精度浮点数，小数点后通常有效15位
+对于Java程序中直接写出的小数数据来说，叫做直接量/字面值/常量，如：3.14等
+而直接量默认为double类型，若希望表达float类型的直接量就需要在直接量的后面加上f或者F都可以。
+扩展：
+    由于Java语言中的float和double类型运算时可能会有误差
+    若希望实现精确运算则借助java.math.BigDecimal类型加以描述。</code></pre><h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><pre><code>在Java语言中用于描述真假信息的数据类型有：boolean，数值只有：true 和 false
+其中boolean类型在内存空间中所占的大小没有明确的规定，通常认为是1个字节  </code></pre><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><pre><code>1.重点掌握变量输入输出的代码以及单个字节表示的整数范围。
+2.思考题：设计一套砝码要求能称量出1 ~ 100g之间的任意重量，请问至少需要多少个砝码？       以及每个砝码各自的重量是多少(砝码只能放在一侧)？  
+3.编程题: 要求用户输入下落时间t(整数)，并按照公式0.5*9.8*t*t来计算下落的位移并打印出来。
+其中小数数据使用double类型声明的变量来记录。
+4.编程题(选做)：要求提示用户输入一个正整数类型的秒数，拆分为时分秒并打印出来。
++ 加法  - 减法  * 乘法  / 除法  % 取余 
+如：3666  =&gt; 1:1:6      </code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chensnape.github.io/2019/08/07/javase-day02/" data-id="cjyzqcmd50002hsnxlh244wiw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javase-day01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/06/javase-day01/" class="article-date">
@@ -166,7 +999,7 @@ cd .. 表示切换到上一级目录</code></pre><h3 id="环境变量的配置">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://chensnape.github.io/2019/08/06/javase-day01/" data-id="cjyzpqrou0001vgnx7lubwqnl" class="article-share-link">Share</a>
+      <a data-url="https://chensnape.github.io/2019/08/06/javase-day01/" data-id="cjyzqcmd20001hsnxesqatpmu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +1048,7 @@ cd .. 表示切换到上一级目录</code></pre><h3 id="环境变量的配置">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://chensnape.github.io/2019/08/05/hello-world/" data-id="cjyzpqrol0000vgnx43cqgjmm" class="article-share-link">Share</a>
+      <a data-url="https://chensnape.github.io/2019/08/05/hello-world/" data-id="cjyzqcmct0000hsnxpjwqq64f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,11 +1089,23 @@ cd .. 表示切换到上一级目录</code></pre><h3 id="环境变量的配置">
       <ul>
         
           <li>
-            <a href="/2019/08/06/javase-day01/">javase_day01</a>
+            <a href="/2019/08/07/javase-day09/">javase_day09</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/hello-world/">Hello World</a>
+            <a href="/2019/08/07/javase-day08/">javase_day08</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/javase-day07/">javase_day07</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/javase-day06/">javase_day06</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/javase-day05/">javase_day05</a>
           </li>
         
       </ul>

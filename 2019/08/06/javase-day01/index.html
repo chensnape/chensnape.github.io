@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>javase_day01 | New Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaSE2019/7/26 9:49:20   计算机的体系结构基本概念计算机俗称“电脑”，是一种呗广泛使用在各个领域的设备。计算机主要由：硬件 和软件 两部分组成。 常件硬件计算机中常件的硬件有：CPU、内存、硬盘、输入输出设备....     CPU - 中央处理器，是计算机最核心的部件，相当于人的大脑         - 主要用于解析并执行计算机指令以及处理软件中的数据     内存 -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javase_day01">
+<meta property="og:url" content="http://yoursite.com/2019/08/06/javase-day01/index.html">
+<meta property="og:site_name" content="New Life">
+<meta property="og:description" content="JavaSE2019/7/26 9:49:20   计算机的体系结构基本概念计算机俗称“电脑”，是一种呗广泛使用在各个领域的设备。计算机主要由：硬件 和软件 两部分组成。 常件硬件计算机中常件的硬件有：CPU、内存、硬盘、输入输出设备....     CPU - 中央处理器，是计算机最核心的部件，相当于人的大脑         - 主要用于解析并执行计算机指令以及处理软件中的数据     内存 -">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-06T10:24:57.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javase_day01">
+<meta name="twitter:description" content="JavaSE2019/7/26 9:49:20   计算机的体系结构基本概念计算机俗称“电脑”，是一种呗广泛使用在各个领域的设备。计算机主要由：硬件 和软件 两部分组成。 常件硬件计算机中常件的硬件有：CPU、内存、硬盘、输入输出设备....     CPU - 中央处理器，是计算机最核心的部件，相当于人的大脑         - 主要用于解析并执行计算机指令以及处理软件中的数据     内存 -">
+  
+    <link rel="alternate" href="/atom.xml" title="New Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">New Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javase-day01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/06/javase-day01/" class="article-date">
+  <time datetime="2019-08-06T08:55:51.000Z" itemprop="datePublished">2019-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javase_day01
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaSE"><a href="#JavaSE" class="headerlink" title="JavaSE"></a>JavaSE</h1><p>2019/7/26 9:49:20 </p>
+<hr>
+<h2 id="计算机的体系结构"><a href="#计算机的体系结构" class="headerlink" title="计算机的体系结构"></a>计算机的体系结构</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>计算机俗称“电脑”，是一种呗广泛使用在各个领域的设备。<br>计算机主要由：硬件 和软件 两部分组成。</p>
+<h3 id="常件硬件"><a href="#常件硬件" class="headerlink" title="常件硬件"></a>常件硬件</h3><pre><code>计算机中常件的硬件有：CPU、内存、硬盘、输入输出设备....
+    CPU - 中央处理器，是计算机最核心的部件，相当于人的大脑
+        - 主要用于解析并执行计算机指令以及处理软件中的数据
+    内存 - 是计算机中的存储部件
+        - 主要用于临时存放CPU要访问的数据内容，效率比较高
+        - 容量小且不能永久存储数据，一旦断电会造成数据丢失
+        - 使用ctrl+s快捷键可以进行数据保存
+    硬盘 - 是计算机中的存储部件；
+        - 该部件中存储的内容不能被CPU直接访问，若希望访问则需要将数据加载到内存在访问；
+        - 容量大且可以实现永久存储数据，断电后数据不会丢失。</code></pre><p>###科普：<br>    1Tb = 1024Gb<br>    1Gb = 1024Mb<br>    1Mb = 1024Kb<br>    1Kb = 1024byte(字节) 通常一个英文字母占一个字节，一个汉字占两个字节<br>    1byte = 8bit(二进制) 在计算机的底层只识别0和1组成的二进制序列</p>
+<p>###思考：<br>    目前主流的硬盘配置：250G  320G  500G  1Tb等，为啥我的硬盘只有298G呢？<br>    解析：<br>        硬件厂商在生产硬件时按照1000作为进率，操作系统是按照1024作为进率。</p>
+<p>###常件软件<br>    计算机中常见的软件分为：系统软件 和 应用软件。<br>    其中系统软件主要指操作系统，目前主流的操作系统有：<br>        windows系列/Unix系列/linux系列/Android系列/ios系列<br>    其中应用软件主要指安装在操作系统之上的软件，如：QQ、迅雷、…</p>
+<p>###计算机的体系结构<br>    使用者 =》应用软件 =》操作系统 =》硬件<br>          =》操作系统分为：外壳（Shell） 和  内核（Kernel）</p>
+<p>##Java语言的基本概述（熟悉）</p>
+<p>###Java语言的产生背景<br>    Java语言的诞生于1995年，高斯林是公认的Java语言之父，隶属于sun公司，现在隶属于oracle（甲骨文）公司。<br>    Java语言在编程语言排行榜上占据重要的地位。</p>
+<p>###Java语言的版本<br>    （1）JavaSE(Java Platform Standard Edition)<br>        - 称之为“Java平台标准版”，主要学校Java语言的语法格式和编程基础<br>    （2）JavaEE(Java Platform Enterprise Edition)<br>        - 称之为“Java平台企业版”，主要学习Java项目的后台开发技术<br>    （3）JavaME(Java Platform Micro Edition)<br>        - 称之为“Java平台微型版”，随着Android系统的普及走向淘汰</p>
+<p>##开发环境的搭建和使用（重点）*****</p>
+<p>###jdk的下载和安装<br>    （1）下载方式<br>        a.从官网直接下载：<a href="http://www.oracle.com/www.sun.com" target="_blank" rel="noopener">www.oracle.com/www.sun.com</a><br>        b.从百度/谷歌/搜狗进行搜索下载<br>    （2）安装方式<br>        若下载的是绿色版，则直接解压即可<br>        若下载的是安装版，则一路点击下一步进行安装即可<br>        切记安装路径中不能有中文</p>
+<p>###相关概念<br>    jdk - Java语言开发工具包，只要做Java语言开发就需要下载和安装该软件<br>    jre - Java运行时环境，只要运行Java语言开发的程序就必须安装该软件<br>    javac.exe - Java语言编辑器，负责将高级源代码文件编译成字节码文件<br>    java.exe - Java语言的解释器，负责将字节码文件进行边解释边执行<br>    JVM - Java虚拟机，用于作为Java语言和操作系统之间的桥梁。</p>
+<p>###编写Java程序的流程<br>    （1）新建文本文档，将xxx.txt修改为xxx.java文件；<br>    （2）使用即使本的方式打开文件，编写Java语言代码后保存；<br>    （3）启动dos窗口。切换到 xxx.java所在目录；<br>    （4）使用javac xxx.java进行编译，生产xxx.class的字节码文件；<br>    （5）使用java xxx进行解释执行，打印最终结果。</p>
+<pre><code>注意：
+    当文件的后缀无法显示时：组织/工具 =》文件夹和搜索选项 =》查看 =》隐藏已知文件类型的扩展名 =》去掉勾选 =》确定</code></pre><p>###常用快捷键***<br>    ctrl + s 保存<br>    ctrl + n 新建<br>    ctrl + c 复制<br>    ctrl + v 粘贴<br>    ctrl + x 剪切<br>    ctrl + o 打开<br>    ctrl + z 撤销<br>    ctrl + a 全选<br>    ctrl + f 查找</p>
+<pre><code>windows + e 打开计算机
+windows + d 回到桌面
+windows + l 锁屏
+windows + r 打开运行，输入cmd回车可以打开dos窗口
+windows + tab 切换任务
+alt + tab 切换任务
+ctrl + alt + delete 打开任务管理器
+ctrl + shift 切换输入法，若切换到中文输入法后就可以使用shift进行中英文切换</code></pre><p>###常用的dos命令<br>    d: 表示切换到d盘<br>    cd 目录名/路径 表示切换到指定的目录中<br>    dir 表示查看当前目录的内容<br>    cls 表示清屏<br>    cd .. 表示切换到上一级目录</p>
+<p>###环境变量的配置***<br>    （1）基本概念<br>         通常情况下的可执行文件只能在该文件所在的目录中使用，为了使得该可执行文件可以在任意的位置直接使用，此时就需要将Javac所在目录配置到环境变量Path中。<br>    （2）配置方式<br>         计算机 =&gt; 鼠标右击 =&gt; 属性 =&gt; 高级系统设置 =&gt; 高级 =&gt; 环境变量 =&gt; 系统变量<br>    =&gt; 找到Path，点击编辑 =&gt; 将javac.exe所在的路径拷贝到Path变量值的最前面，添加分号<br>    =&gt; 一路点击确定即可<br>         切记Path变量值原来的内容不要改！<br>         配置环境变量后记得重启dos窗口！<br>        win10系统不需要添加分号！</p>
+<p>###跨平台原理（记住）<br>    由于不同的操作系统中都提供了Java虚拟机，因此可以将同一份字节码文件翻译成不同的<br>    机器指令在不同的系统中执行，从而实现跨平台的效果，赢得了”一次编译，到处使用”的美名。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/06/javase-day01/" data-id="cjyz45k6v0000m8nxiu6y3a5a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/06/javase-day01/">javase_day01</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/05/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

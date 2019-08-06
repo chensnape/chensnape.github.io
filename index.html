@@ -10,7 +10,7 @@
   <meta name="description" content="Snape&apos;s new life-IT">
 <meta property="og:type" content="website">
 <meta property="og:title" content="New Life">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://chensnape.github.io/index.html">
 <meta property="og:site_name" content="New Life">
 <meta property="og:description" content="Snape&apos;s new life-IT">
 <meta property="og:locale" content="default">
@@ -57,7 +57,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chensnape.github.io"></form>
       </div>
     </div>
   </div>
@@ -99,34 +99,74 @@
         - 使用ctrl+s快捷键可以进行数据保存
     硬盘 - 是计算机中的存储部件；
         - 该部件中存储的内容不能被CPU直接访问，若希望访问则需要将数据加载到内存在访问；
-        - 容量大且可以实现永久存储数据，断电后数据不会丢失。</code></pre><p>###科普：<br>    1Tb = 1024Gb<br>    1Gb = 1024Mb<br>    1Mb = 1024Kb<br>    1Kb = 1024byte(字节) 通常一个英文字母占一个字节，一个汉字占两个字节<br>    1byte = 8bit(二进制) 在计算机的底层只识别0和1组成的二进制序列</p>
-<p>###思考：<br>    目前主流的硬盘配置：250G  320G  500G  1Tb等，为啥我的硬盘只有298G呢？<br>    解析：<br>        硬件厂商在生产硬件时按照1000作为进率，操作系统是按照1024作为进率。</p>
-<p>###常件软件<br>    计算机中常见的软件分为：系统软件 和 应用软件。<br>    其中系统软件主要指操作系统，目前主流的操作系统有：<br>        windows系列/Unix系列/linux系列/Android系列/ios系列<br>    其中应用软件主要指安装在操作系统之上的软件，如：QQ、迅雷、…</p>
-<p>###计算机的体系结构<br>    使用者 =》应用软件 =》操作系统 =》硬件<br>          =》操作系统分为：外壳（Shell） 和  内核（Kernel）</p>
-<p>##Java语言的基本概述（熟悉）</p>
-<p>###Java语言的产生背景<br>    Java语言的诞生于1995年，高斯林是公认的Java语言之父，隶属于sun公司，现在隶属于oracle（甲骨文）公司。<br>    Java语言在编程语言排行榜上占据重要的地位。</p>
-<p>###Java语言的版本<br>    （1）JavaSE(Java Platform Standard Edition)<br>        - 称之为“Java平台标准版”，主要学校Java语言的语法格式和编程基础<br>    （2）JavaEE(Java Platform Enterprise Edition)<br>        - 称之为“Java平台企业版”，主要学习Java项目的后台开发技术<br>    （3）JavaME(Java Platform Micro Edition)<br>        - 称之为“Java平台微型版”，随着Android系统的普及走向淘汰</p>
-<p>##开发环境的搭建和使用（重点）*****</p>
-<p>###jdk的下载和安装<br>    （1）下载方式<br>        a.从官网直接下载：<a href="http://www.oracle.com/www.sun.com" target="_blank" rel="noopener">www.oracle.com/www.sun.com</a><br>        b.从百度/谷歌/搜狗进行搜索下载<br>    （2）安装方式<br>        若下载的是绿色版，则直接解压即可<br>        若下载的是安装版，则一路点击下一步进行安装即可<br>        切记安装路径中不能有中文</p>
-<p>###相关概念<br>    jdk - Java语言开发工具包，只要做Java语言开发就需要下载和安装该软件<br>    jre - Java运行时环境，只要运行Java语言开发的程序就必须安装该软件<br>    javac.exe - Java语言编辑器，负责将高级源代码文件编译成字节码文件<br>    java.exe - Java语言的解释器，负责将字节码文件进行边解释边执行<br>    JVM - Java虚拟机，用于作为Java语言和操作系统之间的桥梁。</p>
-<p>###编写Java程序的流程<br>    （1）新建文本文档，将xxx.txt修改为xxx.java文件；<br>    （2）使用即使本的方式打开文件，编写Java语言代码后保存；<br>    （3）启动dos窗口。切换到 xxx.java所在目录；<br>    （4）使用javac xxx.java进行编译，生产xxx.class的字节码文件；<br>    （5）使用java xxx进行解释执行，打印最终结果。</p>
-<pre><code>注意：
-    当文件的后缀无法显示时：组织/工具 =》文件夹和搜索选项 =》查看 =》隐藏已知文件类型的扩展名 =》去掉勾选 =》确定</code></pre><p>###常用快捷键***<br>    ctrl + s 保存<br>    ctrl + n 新建<br>    ctrl + c 复制<br>    ctrl + v 粘贴<br>    ctrl + x 剪切<br>    ctrl + o 打开<br>    ctrl + z 撤销<br>    ctrl + a 全选<br>    ctrl + f 查找</p>
-<pre><code>windows + e 打开计算机
+        - 容量大且可以实现永久存储数据，断电后数据不会丢失。</code></pre><h3 id="科普："><a href="#科普：" class="headerlink" title="科普："></a>科普：</h3><pre><code>1Tb = 1024Gb
+1Gb = 1024Mb
+1Mb = 1024Kb
+1Kb = 1024byte(字节) 通常一个英文字母占一个字节，一个汉字占两个字节
+1byte = 8bit(二进制) 在计算机的底层只识别0和1组成的二进制序列</code></pre><h3 id="思考："><a href="#思考：" class="headerlink" title="思考："></a>思考：</h3><pre><code>目前主流的硬盘配置：250G  320G  500G  1Tb等，为啥我的硬盘只有298G呢？
+解析：
+    硬件厂商在生产硬件时按照1000作为进率，操作系统是按照1024作为进率。</code></pre><h3 id="常件软件"><a href="#常件软件" class="headerlink" title="常件软件"></a>常件软件</h3><pre><code>计算机中常见的软件分为：系统软件 和 应用软件。
+其中系统软件主要指操作系统，目前主流的操作系统有：
+    windows系列/Unix系列/linux系列/Android系列/ios系列
+其中应用软件主要指安装在操作系统之上的软件，如：QQ、迅雷、...</code></pre><h3 id="计算机的体系结构-1"><a href="#计算机的体系结构-1" class="headerlink" title="计算机的体系结构"></a>计算机的体系结构</h3><pre><code>使用者 =》应用软件 =》操作系统 =》硬件
+      =》操作系统分为：外壳（Shell） 和  内核（Kernel）</code></pre><h2 id="Java语言的基本概述（熟悉）"><a href="#Java语言的基本概述（熟悉）" class="headerlink" title="Java语言的基本概述（熟悉）"></a>Java语言的基本概述（熟悉）</h2><h3 id="Java语言的产生背景"><a href="#Java语言的产生背景" class="headerlink" title="Java语言的产生背景"></a>Java语言的产生背景</h3><pre><code>Java语言的诞生于1995年，高斯林是公认的Java语言之父，隶属于sun公司，现在隶属于oracle（甲骨文）公司。
+Java语言在编程语言排行榜上占据重要的地位。</code></pre><h3 id="Java语言的版本"><a href="#Java语言的版本" class="headerlink" title="Java语言的版本"></a>Java语言的版本</h3><pre><code>（1）JavaSE(Java Platform Standard Edition)
+    - 称之为“Java平台标准版”，主要学校Java语言的语法格式和编程基础
+（2）JavaEE(Java Platform Enterprise Edition)
+    - 称之为“Java平台企业版”，主要学习Java项目的后台开发技术
+（3）JavaME(Java Platform Micro Edition)
+    - 称之为“Java平台微型版”，随着Android系统的普及走向淘汰</code></pre><h2 id="开发环境的搭建和使用（重点）"><a href="#开发环境的搭建和使用（重点）" class="headerlink" title="开发环境的搭建和使用（重点）*****"></a>开发环境的搭建和使用（重点）*****</h2><h3 id="jdk的下载和安装"><a href="#jdk的下载和安装" class="headerlink" title="jdk的下载和安装"></a>jdk的下载和安装</h3><pre><code>（1）下载方式
+    a.从官网直接下载：www.oracle.com/www.sun.com
+    b.从百度/谷歌/搜狗进行搜索下载
+（2）安装方式
+    若下载的是绿色版，则直接解压即可
+    若下载的是安装版，则一路点击下一步进行安装即可
+    切记安装路径中不能有中文</code></pre><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><pre><code>jdk - Java语言开发工具包，只要做Java语言开发就需要下载和安装该软件
+jre - Java运行时环境，只要运行Java语言开发的程序就必须安装该软件
+javac.exe - Java语言编辑器，负责将高级源代码文件编译成字节码文件
+java.exe - Java语言的解释器，负责将字节码文件进行边解释边执行
+JVM - Java虚拟机，用于作为Java语言和操作系统之间的桥梁。</code></pre><h3 id="编写Java程序的流程"><a href="#编写Java程序的流程" class="headerlink" title="编写Java程序的流程"></a>编写Java程序的流程</h3><pre><code>（1）新建文本文档，将xxx.txt修改为xxx.java文件；
+（2）使用即使本的方式打开文件，编写Java语言代码后保存；
+（3）启动dos窗口。切换到 xxx.java所在目录；
+（4）使用javac xxx.java进行编译，生产xxx.class的字节码文件；
+（5）使用java xxx进行解释执行，打印最终结果。
+
+注意：
+    当文件的后缀无法显示时：组织/工具 =》文件夹和搜索选项 =》查看 =》隐藏已知文件类型的扩展名 =》去掉勾选 =》确定</code></pre><h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键***"></a>常用快捷键***</h3><pre><code>ctrl + s 保存
+ctrl + n 新建
+ctrl + c 复制
+ctrl + v 粘贴
+ctrl + x 剪切
+ctrl + o 打开
+ctrl + z 撤销
+ctrl + a 全选
+ctrl + f 查找
+
+windows + e 打开计算机
 windows + d 回到桌面
 windows + l 锁屏
 windows + r 打开运行，输入cmd回车可以打开dos窗口
 windows + tab 切换任务
 alt + tab 切换任务
 ctrl + alt + delete 打开任务管理器
-ctrl + shift 切换输入法，若切换到中文输入法后就可以使用shift进行中英文切换</code></pre><p>###常用的dos命令<br>    d: 表示切换到d盘<br>    cd 目录名/路径 表示切换到指定的目录中<br>    dir 表示查看当前目录的内容<br>    cls 表示清屏<br>    cd .. 表示切换到上一级目录</p>
-<p>###环境变量的配置***<br>    （1）基本概念<br>         通常情况下的可执行文件只能在该文件所在的目录中使用，为了使得该可执行文件可以在任意的位置直接使用，此时就需要将Javac所在目录配置到环境变量Path中。<br>    （2）配置方式<br>         计算机 =&gt; 鼠标右击 =&gt; 属性 =&gt; 高级系统设置 =&gt; 高级 =&gt; 环境变量 =&gt; 系统变量<br>    =&gt; 找到Path，点击编辑 =&gt; 将javac.exe所在的路径拷贝到Path变量值的最前面，添加分号<br>    =&gt; 一路点击确定即可<br>         切记Path变量值原来的内容不要改！<br>         配置环境变量后记得重启dos窗口！<br>        win10系统不需要添加分号！</p>
-<p>###跨平台原理（记住）<br>    由于不同的操作系统中都提供了Java虚拟机，因此可以将同一份字节码文件翻译成不同的<br>    机器指令在不同的系统中执行，从而实现跨平台的效果，赢得了”一次编译，到处使用”的美名。</p>
-
+ctrl + shift 切换输入法，若切换到中文输入法后就可以使用shift进行中英文切换</code></pre><h3 id="常用的dos命令"><a href="#常用的dos命令" class="headerlink" title="常用的dos命令"></a>常用的dos命令</h3><pre><code>d: 表示切换到d盘
+cd 目录名/路径 表示切换到指定的目录中
+dir 表示查看当前目录的内容
+cls 表示清屏 
+cd .. 表示切换到上一级目录</code></pre><h3 id="环境变量的配置"><a href="#环境变量的配置" class="headerlink" title="环境变量的配置***"></a>环境变量的配置***</h3><pre><code>（1）基本概念
+     通常情况下的可执行文件只能在该文件所在的目录中使用，为了使得该可执行文件可以在任意的位置直接使用，此时就需要将Javac所在目录配置到环境变量Path中。
+（2）配置方式
+     计算机 =&gt; 鼠标右击 =&gt; 属性 =&gt; 高级系统设置 =&gt; 高级 =&gt; 环境变量 =&gt; 系统变量
+=&gt; 找到Path，点击编辑 =&gt; 将javac.exe所在的路径拷贝到Path变量值的最前面，添加分号
+=&gt; 一路点击确定即可
+     切记Path变量值原来的内容不要改！
+     配置环境变量后记得重启dos窗口！
+    win10系统不需要添加分号！</code></pre><h3 id="跨平台原理（记住）"><a href="#跨平台原理（记住）" class="headerlink" title="跨平台原理（记住）"></a>跨平台原理（记住）</h3><pre><code>由于不同的操作系统中都提供了Java虚拟机，因此可以将同一份字节码文件翻译成不同的
+机器指令在不同的系统中执行，从而实现跨平台的效果，赢得了&quot;一次编译，到处使用&quot;的美名。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/06/javase-day01/" data-id="cjyz45k6v0000m8nxiu6y3a5a" class="article-share-link">Share</a>
+      <a data-url="https://chensnape.github.io/2019/08/06/javase-day01/" data-id="cjyzoz37q0001yonxe77ihcxx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +215,7 @@ ctrl + shift 切换输入法，若切换到中文输入法后就可以使用shif
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/05/hello-world/" data-id="cjyz45k730001m8nxeth2myt5" class="article-share-link">Share</a>
+      <a data-url="https://chensnape.github.io/2019/08/05/hello-world/" data-id="cjyzoz37j0000yonxv989g9i7" class="article-share-link">Share</a>
       
       
     </footer>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Snape&#39;s new life-IT">
+    
+    
+    
+    
+    
+    
+    <title>javase_day01 | New Life</title>
+    <link href="”https://chensnape.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://chensnape.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">New Life</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="">
+                    <a href="/tags">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://chensnape.github.io">New Life</a>
+        >
+        <span>javase_day01</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/06/javase-day01/">javase_day01</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/06/javase-day01/">javase_day01</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </p>
+            <p>
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="JavaSE"><a href="#JavaSE" class="headerlink" title="JavaSE"></a>JavaSE</h1><p>2019/7/26 9:49:20 </p>
+<hr>
+<h2 id="计算机的体系结构"><a href="#计算机的体系结构" class="headerlink" title="计算机的体系结构"></a>计算机的体系结构</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>计算机俗称“电脑”，是一种呗广泛使用在各个领域的设备。<br>计算机主要由：硬件 和软件 两部分组成。</p>
+<h3 id="常件硬件"><a href="#常件硬件" class="headerlink" title="常件硬件"></a>常件硬件</h3><pre><code>计算机中常件的硬件有：CPU、内存、硬盘、输入输出设备....
+    CPU - 中央处理器，是计算机最核心的部件，相当于人的大脑
+        - 主要用于解析并执行计算机指令以及处理软件中的数据
+    内存 - 是计算机中的存储部件
+        - 主要用于临时存放CPU要访问的数据内容，效率比较高
+        - 容量小且不能永久存储数据，一旦断电会造成数据丢失
+        - 使用ctrl+s快捷键可以进行数据保存
+    硬盘 - 是计算机中的存储部件；
+        - 该部件中存储的内容不能被CPU直接访问，若希望访问则需要将数据加载到内存在访问；
+        - 容量大且可以实现永久存储数据，断电后数据不会丢失。</code></pre><h3 id="科普："><a href="#科普：" class="headerlink" title="科普："></a>科普：</h3><pre><code>1Tb = 1024Gb
+1Gb = 1024Mb
+1Mb = 1024Kb
+1Kb = 1024byte(字节) 通常一个英文字母占一个字节，一个汉字占两个字节
+1byte = 8bit(二进制) 在计算机的底层只识别0和1组成的二进制序列</code></pre><h3 id="思考："><a href="#思考：" class="headerlink" title="思考："></a>思考：</h3><pre><code>目前主流的硬盘配置：250G  320G  500G  1Tb等，为啥我的硬盘只有298G呢？
+解析：
+    硬件厂商在生产硬件时按照1000作为进率，操作系统是按照1024作为进率。</code></pre><h3 id="常件软件"><a href="#常件软件" class="headerlink" title="常件软件"></a>常件软件</h3><pre><code>计算机中常见的软件分为：系统软件 和 应用软件。
+其中系统软件主要指操作系统，目前主流的操作系统有：
+    windows系列/Unix系列/linux系列/Android系列/ios系列
+其中应用软件主要指安装在操作系统之上的软件，如：QQ、迅雷、...</code></pre><h3 id="计算机的体系结构-1"><a href="#计算机的体系结构-1" class="headerlink" title="计算机的体系结构"></a>计算机的体系结构</h3><pre><code>使用者 =》应用软件 =》操作系统 =》硬件
+      =》操作系统分为：外壳（Shell） 和  内核（Kernel）</code></pre><h2 id="Java语言的基本概述（熟悉）"><a href="#Java语言的基本概述（熟悉）" class="headerlink" title="Java语言的基本概述（熟悉）"></a>Java语言的基本概述（熟悉）</h2><h3 id="Java语言的产生背景"><a href="#Java语言的产生背景" class="headerlink" title="Java语言的产生背景"></a>Java语言的产生背景</h3><pre><code>Java语言的诞生于1995年，高斯林是公认的Java语言之父，隶属于sun公司，现在隶属于oracle（甲骨文）公司。
+Java语言在编程语言排行榜上占据重要的地位。</code></pre><h3 id="Java语言的版本"><a href="#Java语言的版本" class="headerlink" title="Java语言的版本"></a>Java语言的版本</h3><pre><code>（1）JavaSE(Java Platform Standard Edition)
+    - 称之为“Java平台标准版”，主要学校Java语言的语法格式和编程基础
+（2）JavaEE(Java Platform Enterprise Edition)
+    - 称之为“Java平台企业版”，主要学习Java项目的后台开发技术
+（3）JavaME(Java Platform Micro Edition)
+    - 称之为“Java平台微型版”，随着Android系统的普及走向淘汰</code></pre><h2 id="开发环境的搭建和使用（重点）"><a href="#开发环境的搭建和使用（重点）" class="headerlink" title="开发环境的搭建和使用（重点）*****"></a>开发环境的搭建和使用（重点）*****</h2><h3 id="jdk的下载和安装"><a href="#jdk的下载和安装" class="headerlink" title="jdk的下载和安装"></a>jdk的下载和安装</h3><pre><code>（1）下载方式
+    a.从官网直接下载：www.oracle.com/www.sun.com
+    b.从百度/谷歌/搜狗进行搜索下载
+（2）安装方式
+    若下载的是绿色版，则直接解压即可
+    若下载的是安装版，则一路点击下一步进行安装即可
+    切记安装路径中不能有中文</code></pre><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><pre><code>jdk - Java语言开发工具包，只要做Java语言开发就需要下载和安装该软件
+jre - Java运行时环境，只要运行Java语言开发的程序就必须安装该软件
+javac.exe - Java语言编辑器，负责将高级源代码文件编译成字节码文件
+java.exe - Java语言的解释器，负责将字节码文件进行边解释边执行
+JVM - Java虚拟机，用于作为Java语言和操作系统之间的桥梁。</code></pre><h3 id="编写Java程序的流程"><a href="#编写Java程序的流程" class="headerlink" title="编写Java程序的流程"></a>编写Java程序的流程</h3><pre><code>（1）新建文本文档，将xxx.txt修改为xxx.java文件；
+（2）使用即使本的方式打开文件，编写Java语言代码后保存；
+（3）启动dos窗口。切换到 xxx.java所在目录；
+（4）使用javac xxx.java进行编译，生产xxx.class的字节码文件；
+（5）使用java xxx进行解释执行，打印最终结果。
+
+注意：
+    当文件的后缀无法显示时：组织/工具 =》文件夹和搜索选项 =》查看 =》隐藏已知文件类型的扩展名 =》去掉勾选 =》确定</code></pre><h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键***"></a>常用快捷键***</h3><pre><code>ctrl + s 保存
+ctrl + n 新建
+ctrl + c 复制
+ctrl + v 粘贴
+ctrl + x 剪切
+ctrl + o 打开
+ctrl + z 撤销
+ctrl + a 全选
+ctrl + f 查找
+
+windows + e 打开计算机
+windows + d 回到桌面
+windows + l 锁屏
+windows + r 打开运行，输入cmd回车可以打开dos窗口
+windows + tab 切换任务
+alt + tab 切换任务
+ctrl + alt + delete 打开任务管理器
+ctrl + shift 切换输入法，若切换到中文输入法后就可以使用shift进行中英文切换</code></pre><h3 id="常用的dos命令"><a href="#常用的dos命令" class="headerlink" title="常用的dos命令"></a>常用的dos命令</h3><pre><code>d: 表示切换到d盘
+cd 目录名/路径 表示切换到指定的目录中
+dir 表示查看当前目录的内容
+cls 表示清屏 
+cd .. 表示切换到上一级目录</code></pre><h3 id="环境变量的配置"><a href="#环境变量的配置" class="headerlink" title="环境变量的配置***"></a>环境变量的配置***</h3><pre><code>（1）基本概念
+     通常情况下的可执行文件只能在该文件所在的目录中使用，为了使得该可执行文件可以在任意的位置直接使用，此时就需要将Javac所在目录配置到环境变量Path中。
+（2）配置方式
+     计算机 =&gt; 鼠标右击 =&gt; 属性 =&gt; 高级系统设置 =&gt; 高级 =&gt; 环境变量 =&gt; 系统变量
+=&gt; 找到Path，点击编辑 =&gt; 将javac.exe所在的路径拷贝到Path变量值的最前面，添加分号
+=&gt; 一路点击确定即可
+     切记Path变量值原来的内容不要改！
+     配置环境变量后记得重启dos窗口！
+    win10系统不需要添加分号！</code></pre><h3 id="跨平台原理（记住）"><a href="#跨平台原理（记住）" class="headerlink" title="跨平台原理（记住）"></a>跨平台原理（记住）</h3><pre><code>由于不同的操作系统中都提供了Java虚拟机，因此可以将同一份字节码文件翻译成不同的
+机器指令在不同的系统中执行，从而实现跨平台的效果，赢得了&quot;一次编译，到处使用&quot;的美名。</code></pre>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            John Doe
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>Snape’s new life-IT</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day09/">javase_day09</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day08/">javase_day08</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day07/">javase_day07</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day06/">javase_day06</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day05/">javase_day05</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day04/">javase_day04</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day03/">javase_day03</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day02/">javase_day02</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/javase-day01/">javase_day01</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/javase-day01/">javase_day01</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day02/">javase_day02</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day03/">javase_day03</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day04/">javase_day04</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day05/">javase_day05</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day06/">javase_day06</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day07/">javase_day07</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day08/">javase_day08</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/javase-day09/">javase_day09</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/06/javase-day01/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/javase-day01/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/javase-day01/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 John Doe Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

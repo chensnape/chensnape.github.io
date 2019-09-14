@@ -12,7 +12,7 @@
     
     
     
-    <title>9static、单例、继承 | New Life</title>
+    <title>categories: java | New Life</title>
     <link href="”https://chensnape.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -168,27 +168,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-category">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://chensnape.github.io">New Life</a>
         >
-        <span>9static、单例、继承</span>
+        <span>目录</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
+                <a href="/categories/java/index.html">java</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-09-15
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -196,73 +188,21 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
+                    <a href="/categories/java/index.html">java</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2019-09-15
-            </p>
-            <p>
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h1 id="static关键字、继承"><a href="#static关键字、继承" class="headerlink" title="static关键字、继承"></a>static关键字、继承</h1><p>2019/8/7 10:56:05</p>
-<hr>
-<h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>+ 通常情况下成员变量隶属于对象层级，也就是每当创建一个对象就会申请一份独立的内存空间来存放该对象独立
-的成员变量信息，若所有对象中某个成员变量的数值一定相同时还单独记录，则会造成内存空间的浪费。
-+ 为了解决上述问题，可以使用static关键字修饰成员变量来表达静态的含义，此时成员变量由对象层级提升为
-类层级被所有对象共享，该成员变量会随着类的加载而准备就绪，与是否创建对象无关。
-+ static关键字还可以修饰成员方法，推荐使用 类名.的方式调用</code></pre><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre><code>（1）在非静态成员方法中既能访问非静态的成员方法又能访问静态的成员；
-    (成员：成员变量+成员方法    静态成员被所有对象共享)
-（2）在静态成员方法中只能访问静态成员不能访问非静态的成员；
-    (成员：成员变量+成员方法    调用静态方法时可能还没有创建对象)
-（3）只有隶属于类层级被所有对象共享的内容才能使用static关键字修饰；
-    (不能滥用static关键字)</code></pre><h3 id="单例设计模式（重中之重）"><a href="#单例设计模式（重中之重）" class="headerlink" title="单例设计模式（重中之重）"></a>单例设计模式（重中之重）</h3><pre><code>（1）基本概念
-    在某些特殊场合中，一个类对外提供且只提供一个对象，这样的类叫做单例类
-    而设计单例类的思想和模式叫做 单例设计模式。
-
-（2）实现流程
-    a.私有化构造方法，使用private关键字修饰；
-    b.声明本类类型的引用指向本类类型的对象，并使用private static关键字修饰；
-    c.提供公有的get方法负责将对象返回出去，并使用static关键字修饰；
-
-（3）实现方式
-    单例设计模式的实现方式有两种：饿汉式 和 懒汉式，以后开发中推荐使用饿汉式</code></pre><h2 id="继承（重中之重）"><a href="#继承（重中之重）" class="headerlink" title="继承（重中之重）"></a>继承（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>+ 当多个类之间有相同的特征和行为时，可以将相同的内容提取出来组成一个公共类，让多个类吸收公共类中
-已有成员然后在多个类内部编写自己独有成员的机制，叫做继承。
-+ 使用继承可以提高代码的复用性、可维护性以及扩展性。
-+ 在Java语言中使用extends（扩展）关键字来表达继承关系。
-如：
-public class Worker extends Person{}    - 表示Worker类继承自Person类
-其中Person类叫做超类、父类、基类。
-其中Worker类叫做派生类、子类、孩子类。</code></pre><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><pre><code>(1)子类不可以继承父类的构造方法和私有方法，但私有成员变量可以继承不能使用；
-
-(2)无论使用何种方式构造子类对象时都会自动调用父类的无参构造方法来初始化从父类
-中继承下来的成员变量相当于在构造方法的第一行增加代码：super()的效果。
-
-(3)使用继承必须满足逻辑关系：子类 is a 父类，也就是不能滥用继承。
-
-(4)Java语言中只支持单继承不支持多继承，也就是一个子类只能有一个父类，但一个父类可以有多个子类。</code></pre><h3 id="方法的重写-Override"><a href="#方法的重写-Override" class="headerlink" title="方法的重写(Override)"></a>方法的重写(Override)</h3><pre><code>(1)基本概念
-    从父类中继承下来的版本不足以满足子类的需求时，就需要子类重新写一个和父类中一样的版本来覆盖从父类中继承的版本，该方式就叫做方法的重写。
-
-(2)重写的原则
-    a.要求方法名相同、参数列表相同、返回值类型相同，从jdk1.5开始允许返回子类类型
-    b.要求访问权限不能变小，可以相同或者变大；
-    c.要求不能抛出更大的异常(异常机制)；</code></pre><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><pre><code>编程实现Singleton类的封装；
-编程实现SingletonTest类进行Singleton类的测试，要求在main方法中能得到且只能得到Singleton类的一个对象。</code></pre><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><pre><code>编程实现Person类的封装，特征有：姓名、年龄，行为：打印所有特征的方法
-编程实现Worker类继承自Person类，Worker类内部暂时啥也不写
-编程实现WorkerTest类，在main方法中使用无参方式构造对象并打印特征</code></pre><h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><pre><code>(1)重点掌握Singleton.java和Person.java以及Worker.java文件的代码。
-(2)自定义矩形(Rect)类，特征有：横纵坐标、长度及宽度，要求实现封装并提供打印方法；
-自定义圆形(Circle)类，特征有：横纵坐标、半径，要求实现封装并提供打印方法；
-提取共性自定义图形(Shape)类。
-自定义ShapeTest类，自定义成员方法实现既能打印矩形又能打印圆形的方法并调用
-(最后一个成员方法选做)</code></pre>
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2019/09/15/1常用快捷键/">1常用快捷键</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -396,19 +336,19 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/13日期类、集合/">13日期类、集合</a>
+                    <a href="/2019/09/15/12包装类、数学处理类、String类、常量池/">12包装类、数学处理类、String类、常量池</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/16异常机制、File类、IO流/">16异常机制、File类、IO流</a>
+                    <a href="/2019/09/15/14List集合/">14List集合</a>
                 </span>
             </li>
             
@@ -420,7 +360,7 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/20常用设计模式、基础算法/">20常用设计模式、基础算法</a>
+                    <a href="/2019/09/15/18线程、网络编程/">18线程、网络编程</a>
                 </span>
             </li>
             
@@ -438,12 +378,6 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/6二维数组、面向对象/">6二维数组、面向对象</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/09/15/7成员方法、构造方法和方法重载/">7成员方法、构造方法和方法重载</a>
                 </span>
             </li>
@@ -451,6 +385,12 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/09/15/8this、传参过程、递归、封装/">8this、传参过程、递归、封装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/hello-world/">Hello World</a>
                 </span>
             </li>
             
@@ -465,17 +405,17 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
 
                 
                 <li>
-                    <a href="/2019/09/15/9static、单例、继承/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/categories/java/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/09/15/9static、单例、继承/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/categories/java/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/09/15/9static、单例、继承/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/categories/java/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -483,9 +423,9 @@ public class Worker extends Person{}    - 表示Worker类继承自Person类
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/java/" style="font-size: 11.735740285713288px;" class="tag-cloud-link">java</a>
+    <a href="/tags/java/" style="font-size: 12.805343954336932px;" class="tag-cloud-link">java</a>
     
-    <a href="/tags/快捷键/" style="font-size: 13.381560496657839px;" class="tag-cloud-link">快捷键</a>
+    <a href="/tags/快捷键/" style="font-size: 11.288750134422319px;" class="tag-cloud-link">快捷键</a>
     
 </div>
                 

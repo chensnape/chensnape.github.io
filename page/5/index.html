@@ -106,20 +106,48 @@
                 
                 
                 
-                <li class="">
-                    <a href="/categories">
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
                         <i class="fa fa-list"></i>分类
                     </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/java/">java</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
                 </li>
                 
                 
                 
                 
                 
-                <li class="">
-                    <a href="/tags">
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
                         <i class="fa fa-tags"></i>标签
                     </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/java/">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/快捷键/">快捷键</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
                 </li>
                 
                 
@@ -183,7 +211,7 @@
                 <a href="/2019/09/15/2变量和注释、数据类型/">
                     <div class="img">
                         
-                        <img src="/imgs/preview/preview2.jpg" alt="2变量和注释、数据类型">
+                        <img src="/imgs/preview/preview1.jpg" alt="2变量和注释、数据类型">
                     </div>
                     <div class="info">
                         
@@ -217,7 +245,7 @@
             <p style="text-align: center;">
                 <a href="/2019/09/15/2变量和注释、数据类型/">
                     
-                    <img src="/imgs/preview/preview2.jpg" alt="2变量和注释、数据类型">
+                    <img src="/imgs/preview/preview3.jpg" alt="2变量和注释、数据类型">
                 </a>
             </p>
         </div>
@@ -245,6 +273,15 @@
             </h1>
         </div>
         <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/java/">java</a>, 
+                
+                <a href="/tags/快捷键/">快捷键</a>
+                
+            </span>
             
             
             <!-- TODO 添加评论统计 -->
@@ -285,6 +322,13 @@
         <p></p>
         <center>
             
+            <i class="fa fa-tags"></i>
+            
+            <a href="/tags/java/">java</a>, 
+            
+            <a href="/tags/快捷键/">快捷键</a>
+            
+            
             
         </center>
         <p></p>
@@ -292,7 +336,7 @@
             <p style="text-align: center;">
                 <a href="/2019/09/15/1常用快捷键/">
                     
-                    <img src="/imgs/preview/preview1.jpg" alt="1常用快捷键">
+                    <img src="/imgs/preview/preview4.jpg" alt="1常用快捷键">
                 </a>
             </p>
         </div>
@@ -333,7 +377,7 @@
                 <a href="/2019/08/05/hello-world/">
                     <div class="img">
                         
-                        <img src="/imgs/preview/preview3.jpg" alt="Hello World">
+                        <img src="/imgs/preview/preview1.jpg" alt="Hello World">
                     </div>
                     <div class="info">
                         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -368,7 +412,7 @@
             <p style="text-align: center;">
                 <a href="/2019/08/05/hello-world/">
                     
-                    <img src="/imgs/preview/preview4.jpg" alt="Hello World">
+                    <img src="/imgs/preview/preview2.jpg" alt="Hello World">
                 </a>
             </p>
         </div>
@@ -563,31 +607,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/13日期类、集合/">13日期类、集合</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/15泛型机制、Queue、Set、Map集合/">15泛型机制、Queue、Set、Map集合</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/18线程、网络编程/">18线程、网络编程</a>
+                    <a href="/2019/09/15/17IO流、线程/">17IO流、线程</a>
                 </span>
             </li>
             
@@ -611,7 +631,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/09/15/2变量和注释、数据类型/">2变量和注释、数据类型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/5循环结构、一维数组/">5循环结构、一维数组</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/09/15/6二维数组、面向对象/">6二维数组、面向对象</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
                 </span>
             </li>
             
@@ -649,6 +693,10 @@
             <div class="tab-content">
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/java/" style="font-size: 9.77728700498221px;" class="tag-cloud-link">java</a>
+    
+    <a href="/tags/快捷键/" style="font-size: 15.641744975365288px;" class="tag-cloud-link">快捷键</a>
     
 </div>
                 

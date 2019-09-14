@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="chen">
     
     <meta name="description" content="Snape&#39;s new life-IT">
     
@@ -197,26 +197,9 @@ int age;</code></pre><h3 id="标识符（变量名）的命名规则"><a href="#
 （3）区分大小写，长度没有限制但不宜过长
 如：Day和day代表两个不同的变量名，不推荐使用
 （4）尽量做到见名知意，支持中文但不推荐使用
-如：year、month、day、hour、minute、second、size、time等</code></pre><h3 id="变量输入输出的优化"><a href="#变量输入输出的优化" class="headerlink" title="变量输入输出的优化"></a>变量输入输出的优化</h3><pre><code>import java.util.Scanner;
-public class VarIOTest{
-    public static void main(String[] args){
-    //1.声明两个变量用于记录姓名和年龄信息
-    //String name;
-    //int age;
-    //2.提示用户输入姓名和年龄信息并记录到上述变量中
-    System.out.println(&quot;请输入你的姓名年龄&quot;);
-    //创建扫描器来扫描键盘输入的内容
-    Scanner sc = new Scanner(System.in);
-    //读取一个字符串放到变量name中
-    String name = sc.next();
-    //读取一个整数放到变量age中
-    int age = sc.nextInt();    
-    //3.打印用户输入的姓名和年龄
-    //System.out.println(&quot;name=&quot;+name);
-    //System.out.println(&quot;age=&quot;+age);
-    System.out.println(&quot;name =&quot;+name+&quot;, age=&quot;+age);
-    }
-}</code></pre><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><pre><code>// - 表示单行注释，从//开始一直到本行末尾的所有内容都是注释
+如：year、month、day、hour、minute、second、size、time等</code></pre><h3 id="变量输入输出的优化"><a href="#变量输入输出的优化" class="headerlink" title="变量输入输出的优化"></a>变量输入输出的优化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VarIOTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="comment">//1.声明两个变量用于记录姓名和年龄信息</span></span><br><span class="line">	<span class="comment">//String name;</span></span><br><span class="line">	<span class="comment">//int age;</span></span><br><span class="line">	<span class="comment">//2.提示用户输入姓名和年龄信息并记录到上述变量中</span></span><br><span class="line">	System.out.println(<span class="string">"请输入你的姓名年龄"</span>);</span><br><span class="line">	<span class="comment">//创建扫描器来扫描键盘输入的内容</span></span><br><span class="line">	Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	<span class="comment">//读取一个字符串放到变量name中</span></span><br><span class="line">	String name = sc.next();</span><br><span class="line">	<span class="comment">//读取一个整数放到变量age中</span></span><br><span class="line">	<span class="keyword">int</span> age = sc.nextInt();	</span><br><span class="line">	<span class="comment">//3.打印用户输入的姓名和年龄</span></span><br><span class="line">	<span class="comment">//System.out.println("name="+name);</span></span><br><span class="line">	<span class="comment">//System.out.println("age="+age);</span></span><br><span class="line">	System.out.println(<span class="string">"name ="</span>+name+<span class="string">", age="</span>+age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><pre><code>// - 表示单行注释，从//开始一直到本行末尾的所有内容都是注释
 /**/ - 表示多行注释，从/*开始一直到*/之间的所有内容都是注释
 注意：
     多好注释不允许嵌套使用！</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本分类（记住）"><a href="#基本分类（记住）" class="headerlink" title="基本分类（记住）"></a>基本分类（记住）</h3><pre><code>在Java语言中将数据类型分为两大类：
@@ -329,7 +312,7 @@ public class VarIOTest{
     <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
         <div class="panel-heading" style="text-align: center">
             <i class="fa fa-quote-left"></i>
-            John Doe
+            chen
             <i class="fa fa-quote-right"></i>
         </div>
         <div class="author-panel text-center">
@@ -444,7 +427,7 @@ public class VarIOTest{
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
                 </span>
             </li>
             
@@ -456,7 +439,7 @@ public class VarIOTest{
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/15泛型机制、Queue、Set、Map集合/">15泛型机制、Queue、Set、Map集合</a>
+                    <a href="/2019/09/15/16异常机制、File类、IO流/">16异常机制、File类、IO流</a>
                 </span>
             </li>
             
@@ -468,13 +451,7 @@ public class VarIOTest{
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/4分支结构、循环结构/">4分支结构、循环结构</a>
+                    <a href="/2019/09/15/21基于tcp的在线考试系统/">21基于tcp的在线考试系统</a>
                 </span>
             </li>
             
@@ -486,19 +463,25 @@ public class VarIOTest{
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/8this、传参过程、递归、封装/">8this、传参过程、递归、封装</a>
+                    <a href="/2019/09/15/7成员方法、构造方法和方法重载/">7成员方法、构造方法和方法重载</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/索引-javase/">索引_javase</a>
+                    <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/08/05/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/18线程、网络编程/">18线程、网络编程</a>
                 </span>
             </li>
             
@@ -577,7 +560,7 @@ public class VarIOTest{
     </div>
     <footer id="gal-footer">
     <div class="container">
-        Copyright © 2018 John Doe Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+        Copyright © 2018 chen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
     </div>
 </footer>
 

@@ -183,24 +183,33 @@
     <div class="content-article">
         <h1 id="访问控制、final关键字、多态、抽象类"><a href="#访问控制、final关键字、多态、抽象类" class="headerlink" title="访问控制、final关键字、多态、抽象类"></a>访问控制、final关键字、多态、抽象类</h1><p>2019/8/8 8:00:00</p>
 <hr>
-<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><h3 id="常用的访问控制符（笔试题）"><a href="#常用的访问控制符（笔试题）" class="headerlink" title="常用的访问控制符（笔试题）"></a>常用的访问控制符（笔试题）</h3><pre><code>访问控制符             访问权限    本类内部    本包中的类    子类内部     其它包的类</code></pre><hr>
-<pre><code>public        公有的        ok        ok        ok        ok
-protected     保护的        ok        ok        ok        no
-啥也不写              默认的        ok        ok        no        no
-private       私有的        ok        no        no        no</code></pre><p>要求大家掌握的内容：<br>    a.public修饰的内容可以在任意位置使用；<br>    b.private修饰的内容只能在本类中使用；<br>    c.通常情况下，成员方法都使用public修饰，成员变量都使用private修饰；</p>
-<h3 id="包的定义"><a href="#包的定义" class="headerlink" title="包的定义"></a>包的定义</h3><pre><code>package 包名; - 为了方便管理以及避免命名冲突的问题
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><h3 id="常用的访问控制符（笔试题）"><a href="#常用的访问控制符（笔试题）" class="headerlink" title="常用的访问控制符（笔试题）"></a>常用的访问控制符（笔试题）</h3><pre><code>访问控制符    访问权限    本类内部    本包中的类    子类内部     其它包的类</code></pre><hr>
+<pre><code>public            公有的        ok        ok        ok        ok
+protected         保护的        ok        ok        ok        no
+啥也不写    默认的        ok        ok        no        no
+private           私有的        ok        no        no        no
+
+要求大家掌握的内容：
+a.public修饰的内容可以在任意位置使用；
+b.private修饰的内容只能在本类中使用；
+c.通常情况下，成员方法都使用public修饰，成员变量都使用private修饰；</code></pre><h3 id="包的定义"><a href="#包的定义" class="headerlink" title="包的定义"></a>包的定义</h3><pre><code>package 包名; - 为了方便管理以及避免命名冲突的问题
 package 包名1.包名2...包名n;    - 为了定义多层包</code></pre><h2 id="final关键字（重点）"><a href="#final关键字（重点）" class="headerlink" title="final关键字（重点）"></a>final关键字（重点）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>final关键字本意为&quot;最终的，不可更改的&quot;，修饰类、成员方法以及成员变量等。</code></pre><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre><code>final关键字修饰类体现在该类不能被继承。
     - 为了防止滥用继承，如：java.lang.System类等
 final关键字修饰成员方法体现在该方法不能被重写但可以被继承。
     - 为了防止不经意间造成方法的重写，如：java.text.DateFormat类中format方法
 final关键字修饰成员变量体现在该变量必须初始化而且不能更改。
-    - 为了防止不经意间造成的修改，如：java.lang.Thread类中MAX_PRIORITY等</code></pre><p>扩展：<br>    在以后的开发中很少单独使用static或final关键字修饰成员变量，而是使用public static final<br>    这些关键字共同修饰成员变量表达常量的含义，常量的命名规范是：所有字母大写，不同的单词之间采用下划线连接，如：<br>    public static final double PI = 3.14;</p>
-<h2 id="多态（重中之重）"><a href="#多态（重中之重）" class="headerlink" title="多态（重中之重）"></a>多态（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>多态主要指同一种事物表现出来的多种形态。
+    - 为了防止不经意间造成的修改，如：java.lang.Thread类中MAX_PRIORITY等
+扩展：
+在以后的开发中很少单独使用static或final关键字修饰成员变量，而是使用public static final
+这些关键字共同修饰成员变量表达常量的含义，常量的命名规范是：所有字母大写，不同的单词之间采用下划线连接，如：
+public static final double PI = 3.14;</code></pre><h2 id="多态（重中之重）"><a href="#多态（重中之重）" class="headerlink" title="多态（重中之重）"></a>多态（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>多态主要指同一种事物表现出来的多种形态。
 饮料：可乐、雪碧、脉动、乐虎、红牛、...
 宠物：猫、狗、鸟、乌龟、小强、...
-人：    学生、教师、工人、保安、...</code></pre><h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><pre><code>父类类型    引用变量名 = new 子类类型();</code></pre><p>如：<br>    Person p = new Worker();<br>    p.show();</p>
-<p>解析：<br>    编译阶段调用Person类型的show方法，运行阶段调用Worker类中的show方法</p>
-<h3 id="多态的效果"><a href="#多态的效果" class="headerlink" title="多态的效果"></a>多态的效果</h3><pre><code>(1)当父类类型的引用指向子类类型的对象时，父类引用可以直接调用父类独有的方法；
+人：    学生、教师、工人、保安、...</code></pre><h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><pre><code>父类类型    引用变量名 = new 子类类型();</code></pre><pre><code class="java">
+Person p = <span class="keyword">new</span> Worker();
+p.show();</code></pre>
+<pre><code>解析：
+编译阶段调用Person类型的show方法，运行阶段调用Worker类中的show方法</code></pre><h3 id="多态的效果"><a href="#多态的效果" class="headerlink" title="多态的效果"></a>多态的效果</h3><pre><code>(1)当父类类型的引用指向子类类型的对象时，父类引用可以直接调用父类独有的方法；
 (2)当父类类型的引用指向子类类型的对象时，父类引用不可以直接调用子类独有的方法
 (3)对于父子类都有的非静态方法来说，编译阶段调用父类版本，运行阶段调用子类版本
 (4)对于父子类都有的静态方法来说，编译和运行阶段都调用父类版本； </code></pre><h3 id="引用类型之间的转换"><a href="#引用类型之间的转换" class="headerlink" title="引用类型之间的转换"></a>引用类型之间的转换</h3><pre><code>(1)Java语言中引用数据类型之间的转换分为：自动类型转换 和 强制类型转换。
@@ -359,19 +368,13 @@ if(引用变量名 instanceof 目标类型) - 判断引用指向的对象是否�
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                    <a href="/2019/09/15/12包装类、数学处理类、String类、常量池/">12包装类、数学处理类、String类、常量池</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/13日期类、集合/">13日期类、集合</a>
+                    <a href="/2019/09/15/14List集合/">14List集合</a>
                 </span>
             </li>
             
@@ -383,19 +386,19 @@ if(引用变量名 instanceof 目标类型) - 判断引用指向的对象是否�
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/09/15/17IO流、线程/">17IO流、线程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/09/15/19tcp编程模型、常用设计原则、模式/">19tcp编程模型、常用设计原则、模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/4分支结构、循环结构/">4分支结构、循环结构</a>
+                    <a href="/2019/09/15/2变量和注释、数据类型/">2变量和注释、数据类型</a>
                 </span>
             </li>
             
@@ -413,7 +416,13 @@ if(引用变量名 instanceof 目标类型) - 判断引用指向的对象是否�
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/7成员方法、构造方法和方法重载/">7成员方法、构造方法和方法重载</a>
+                    <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/索引-javase/">索引_javase</a>
                 </span>
             </li>
             

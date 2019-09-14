@@ -183,9 +183,16 @@
     <div class="content-article">
         <h1 id="基于tcp协议的编程模型、常用的设计原则、常用的设计模式"><a href="#基于tcp协议的编程模型、常用的设计原则、常用的设计模式" class="headerlink" title="基于tcp协议的编程模型、常用的设计原则、常用的设计模式"></a>基于tcp协议的编程模型、常用的设计原则、常用的设计模式</h1><p>2019/8/22 8:51:30</p>
 <hr>
-<h2 id="基于tcp协议的编程模型"><a href="#基于tcp协议的编程模型" class="headerlink" title="基于tcp协议的编程模型"></a>基于tcp协议的编程模型</h2><h3 id="编程模型"><a href="#编程模型" class="headerlink" title="编程模型"></a>编程模型</h3><p>服务器：<br>    (1)创建ServerSocket类型的对象并提供端口号<br>    (2)等待客户端连接请求，调用accept方法<br>    (3)使用输入输出流进行通信<br>    (4)关闭Socket并释放有关资源</p>
-<p>客户端：<br>    (1)创建Socket类型的对象并提供服务器的通信地址和端口号；<br>    (2)使用输入输出流进行通信；<br>    (3)关闭Socket并释放有关资源</p>
-<h2 id="常用的设计原则-记住"><a href="#常用的设计原则-记住" class="headerlink" title="常用的设计原则(记住)"></a>常用的设计原则(记住)</h2><h3 id="软件开发的流程"><a href="#软件开发的流程" class="headerlink" title="软件开发的流程"></a>软件开发的流程</h3><pre><code>需求分析文档  =&gt; 概要设计文档  =&gt;  详细设计文档  =&gt;  编码和测试  =&gt;  安装和调试
+<h2 id="基于tcp协议的编程模型"><a href="#基于tcp协议的编程模型" class="headerlink" title="基于tcp协议的编程模型"></a>基于tcp协议的编程模型</h2><h3 id="编程模型"><a href="#编程模型" class="headerlink" title="编程模型"></a>编程模型</h3><pre><code>服务器：
+(1)创建ServerSocket类型的对象并提供端口号
+(2)等待客户端连接请求，调用accept方法
+(3)使用输入输出流进行通信
+(4)关闭Socket并释放有关资源
+
+客户端：
+(1)创建Socket类型的对象并提供服务器的通信地址和端口号；
+(2)使用输入输出流进行通信；
+(3)关闭Socket并释放有关资源</code></pre><h2 id="常用的设计原则-记住"><a href="#常用的设计原则-记住" class="headerlink" title="常用的设计原则(记住)"></a>常用的设计原则(记住)</h2><h3 id="软件开发的流程"><a href="#软件开发的流程" class="headerlink" title="软件开发的流程"></a>软件开发的流程</h3><pre><code>需求分析文档  =&gt; 概要设计文档  =&gt;  详细设计文档  =&gt;  编码和测试  =&gt;  安装和调试
 =&gt;  维护和升级</code></pre><h3 id="常用的设计原则"><a href="#常用的设计原则" class="headerlink" title="常用的设计原则"></a>常用的设计原则</h3><pre><code>开闭原则    - 对扩展开放，对修改关闭</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> String name;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubPerson</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">	里氏代换原则   - 任何基类可以出现的地方，子类一定可以出现</span><br><span class="line">			 - 建议多使用多态,屏蔽不同子类的差异性实现通用的编程</span><br><span class="line">			 - 子类 is a 父类</span><br><span class="line">			 </span><br><span class="line">``` java</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Shap s)</span></span>&#123;</span><br><span class="line">		s.show();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	draw(<span class="keyword">new</span> Circle(<span class="number">11</span>,<span class="number">2</span>,<span class="number">3</span>));</span><br><span class="line">	draw(<span class="keyword">new</span> Rect(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
 
 
@@ -206,14 +213,14 @@
     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>{...}
 }
 
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>{    - 继承的方式，不推荐
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>{        <span class="comment">//继承的方式，不推荐</span>
     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>{
         <span class="comment">//希望调用show方法</span>
         show();
     }
 }
 
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>{            - 合成复用的方式，推荐
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>{            <span class="comment">//合成复用的方式，推荐</span>
     <span class="keyword">private</span> A a;
     <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>{
         <span class="keyword">this</span>.a=a;
@@ -375,13 +382,13 @@ UserMessage对象中的类型改为&quot;success&quot;，否则将类型改为&q
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/11接口、内部类、object类/">11接口、内部类、object类</a>
+                    <a href="/2019/09/15/14List集合/">14List集合</a>
                 </span>
             </li>
             
@@ -393,7 +400,7 @@ UserMessage对象中的类型改为&quot;success&quot;，否则将类型改为&q
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/1常用快捷键/">1常用快捷键</a>
+                    <a href="/2019/09/15/19tcp编程模型、常用设计原则、模式/">19tcp编程模型、常用设计原则、模式</a>
                 </span>
             </li>
             
@@ -405,13 +412,19 @@ UserMessage对象中的类型改为&quot;success&quot;，否则将类型改为&q
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
+                    <a href="/2019/09/15/2变量和注释、数据类型/">2变量和注释、数据类型</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/5循环结构、一维数组/">5循环结构、一维数组</a>
+                    <a href="/2019/09/15/6二维数组、面向对象/">6二维数组、面向对象</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/8this、传参过程、递归、封装/">8this、传参过程、递归、封装</a>
                 </span>
             </li>
             
@@ -424,12 +437,6 @@ UserMessage对象中的类型改为&quot;success&quot;，否则将类型改为&q
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/08/05/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/索引-javase/">索引_javase</a>
                 </span>
             </li>
             

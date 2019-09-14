@@ -206,8 +206,11 @@
 可以将整个集合读取出来</code></pre><h2 id="线程-重点"><a href="#线程-重点" class="headerlink" title="线程(重点)"></a>线程(重点)</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>程序 - 数据结构 + 算法，主要指存放在硬盘上的可执行文件
 进程 - 主要指运行在内存中的可执行文件
 
-目前主流的操作系统都支持多进程，是为了让操作系统同时执行多个任务，但进程是重量级的，新建进程</code></pre><p>对系统的资源消耗比较大，因此进程的数量比较局限<br>    线程是进程内部的程序流，也就是说操作系统中支持多进程，而每个进程的内部又可以支持多个线程，并且<br>线程是轻量级的，新建线程会共享所在进程的系统资源，因此主流的开发都采用多线程<br>    多线程技术是采用时间片轮转法来保证线程的并发执行，所谓并发就是指宏观并行微观串行的机制</p>
-<h3 id="线程的创建-重中之重"><a href="#线程的创建-重中之重" class="headerlink" title="线程的创建(重中之重)"></a>线程的创建(重中之重)</h3><pre><code>(1)线程的创建方式
+目前主流的操作系统都支持多进程，是为了让操作系统同时执行多个任务，但进程是重量级的，新建进程
+对系统的资源消耗比较大，因此进程的数量比较局限
+线程是进程内部的程序流，也就是说操作系统中支持多进程，而每个进程的内部又可以支持多个线程，并且
+线程是轻量级的，新建线程会共享所在进程的系统资源，因此主流的开发都采用多线程
+多线程技术是采用时间片轮转法来保证线程的并发执行，所谓并发就是指宏观并行微观串行的机制</code></pre><h3 id="线程的创建-重中之重"><a href="#线程的创建-重中之重" class="headerlink" title="线程的创建(重中之重)"></a>线程的创建(重中之重)</h3><pre><code>(1)线程的创建方式
     java.lang.Thread类主要用于描述线程，Java虚拟机允许应用程序执行多个线程
 而线程的创建和启动方式如下：
     a.自定义类继承Thread类并重写run方法，然后创建该类的对象调用start方法；
@@ -396,25 +399,37 @@ PrintStream类负责将数据写入文件
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/19tcp编程模型、常用设计原则、模式/">19tcp编程模型、常用设计原则、模式</a>
+                    <a href="/2019/09/15/16异常机制、File类、IO流/">16异常机制、File类、IO流</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/1常用快捷键/">1常用快捷键</a>
+                    <a href="/2019/09/15/17IO流、线程/">17IO流、线程</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/20常用设计模式、基础算法/">20常用设计模式、基础算法</a>
+                    <a href="/2019/09/15/18线程、网络编程/">18线程、网络编程</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/4分支结构、循环结构/">4分支结构、循环结构</a>
+                    <a href="/2019/09/15/2变量和注释、数据类型/">2变量和注释、数据类型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/5循环结构、一维数组/">5循环结构、一维数组</a>
                 </span>
             </li>
             
@@ -426,19 +441,7 @@ PrintStream类负责将数据写入文件
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/8this、传参过程、递归、封装/">8this、传参过程、递归、封装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/05/hello-world/">Hello World</a>
                 </span>
             </li>
             

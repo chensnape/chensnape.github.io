@@ -183,8 +183,11 @@
     <div class="content-article">
         <h1 id="static关键字、继承"><a href="#static关键字、继承" class="headerlink" title="static关键字、继承"></a>static关键字、继承</h1><p>2019/8/7 10:56:05</p>
 <hr>
-<h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>通常情况下成员变量隶属于对象层级，也就是每当创建一个对象就会申请一份独立的内存空间来存放该对象独立</code></pre><p>的成员变量信息，若所有对象中某个成员变量的数值一定相同时还单独记录，则会造成内存空间的浪费。<br>    为了解决上述问题，可以使用static关键字修饰成员变量来表达静态的含义，此时成员变量由对象层级提升为<br>类层级被所有对象共享，该成员变量会随着类的加载而准备就绪，与是否创建对象无关。<br>    static关键字还可以修饰成员方法，推荐使用 类名.的方式调用</p>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre><code>（1）在非静态成员方法中既能访问非静态的成员方法又能访问静态的成员；
+<h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>通常情况下成员变量隶属于对象层级，也就是每当创建一个对象就会申请一份独立的内存空间来存放该对象独立
+的成员变量信息，若所有对象中某个成员变量的数值一定相同时还单独记录，则会造成内存空间的浪费。
+为了解决上述问题，可以使用static关键字修饰成员变量来表达静态的含义，此时成员变量由对象层级提升为
+类层级被所有对象共享，该成员变量会随着类的加载而准备就绪，与是否创建对象无关。
+static关键字还可以修饰成员方法，推荐使用 类名.的方式调用</code></pre><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre><code>（1）在非静态成员方法中既能访问非静态的成员方法又能访问静态的成员；
     (成员：成员变量+成员方法    静态成员被所有对象共享)
 （2）在静态成员方法中只能访问静态成员不能访问非静态的成员；
     (成员：成员变量+成员方法    调用静态方法时可能还没有创建对象)
@@ -199,7 +202,10 @@
     c.提供公有的get方法负责将对象返回出去，并使用static关键字修饰；
 
 （3）实现方式
-    单例设计模式的实现方式有两种：饿汉式 和 懒汉式，以后开发中推荐使用饿汉式</code></pre><h2 id="继承（重中之重）"><a href="#继承（重中之重）" class="headerlink" title="继承（重中之重）"></a>继承（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>当多个类之间有相同的特征和行为时，可以将相同的内容提取出来组成一个公共类，让多个类吸收公共类中</code></pre><p>已有成员然后在多个类内部编写自己独有成员的机制，叫做继承。<br>    使用继承可以提高代码的复用性、可维护性以及扩展性。<br>    在Java语言中使用extends（扩展）关键字来表达继承关系。<br>如：<br>    public class Worker extends Person{}    - 表示Worker类继承自Person类<br>    其中Person类叫做超类、父类、基类。<br>    其中Worker类叫做派生类、子类、孩子类。</p>
+    单例设计模式的实现方式有两种：饿汉式 和 懒汉式，以后开发中推荐使用饿汉式</code></pre><h2 id="继承（重中之重）"><a href="#继承（重中之重）" class="headerlink" title="继承（重中之重）"></a>继承（重中之重）</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>当多个类之间有相同的特征和行为时，可以将相同的内容提取出来组成一个公共类，让多个类吸收公共类中
+已有成员然后在多个类内部编写自己独有成员的机制，叫做继承。
+使用继承可以提高代码的复用性、可维护性以及扩展性。
+在Java语言中使用extends（扩展）关键字来表达继承关系。</code></pre><p>如：<br>    public class Worker extends Person{}    - 表示Worker类继承自Person类<br>    其中Person类叫做超类、父类、基类。<br>    其中Worker类叫做派生类、子类、孩子类。</p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><pre><code>(1)子类不可以继承父类的构造方法和私有方法，但私有成员变量可以继承不能使用；
 
 (2)无论使用何种方式构造子类对象时都会自动调用父类的无参构造方法来初始化从父类
@@ -359,7 +365,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/13日期类、集合/">13日期类、集合</a>
+                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/16异常机制、File类、IO流/">16异常机制、File类、IO流</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/19tcp编程模型、常用设计原则、模式/">19tcp编程模型、常用设计原则、模式</a>
                 </span>
             </li>
             
@@ -377,7 +395,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/09/15/4分支结构、循环结构/">4分支结构、循环结构</a>
+                    <a href="/2019/09/15/21基于tcp的在线考试系统/">21基于tcp的在线考试系统</a>
                 </span>
             </li>
             
@@ -395,25 +413,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/09/15/8this、传参过程、递归、封装/">8this、传参过程、递归、封装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/05/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/索引-javase/">索引_javase</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/09/15/18线程、网络编程/">18线程、网络编程</a>
                 </span>
             </li>
             

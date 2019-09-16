@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="chen">
+    
+    <meta name="description" content="Snape&#39;s new life-IT">
+    
+    
+    
+    
+    
+    
+    <title>4子查询、多表查询 | New Life</title>
+    <link href="”https://chensnape.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://chensnape.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">New Life</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/java/">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/oracle/">oracle</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/索引/">索引</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/java/">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/访问控制、final、多态抽象类/">访问控制、final、多态抽象类</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/接口、内部类、object类/">接口、内部类、object类</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://chensnape.github.io">New Life</a>
+        >
+        <span>4子查询、多表查询</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/09/16/4子查询、多表查询/">4子查询、多表查询</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/oracle/">oracle</a>, 
+                
+                <a href="/tags/子查询、多表查询/">子查询、多表查询</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-09-16
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/09/16/4子查询、多表查询/">4子查询、多表查询</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-09-16
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/oracle/">oracle</a>, 
+                
+                <a href="/tags/子查询、多表查询/">子查询、多表查询</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="子查询、多表查询"><a href="#子查询、多表查询" class="headerlink" title="子查询、多表查询"></a>子查询、多表查询</h1><p>2019/9/3 15:36:14</p>
+<hr>
+<h2 id="select查询语句-重中之重、难点"><a href="#select查询语句-重中之重、难点" class="headerlink" title="select查询语句(重中之重、难点)"></a>select查询语句(重中之重、难点)</h2><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre><code>子查询就是指将一个查询语句的结果作为另外一个查询语句条件的方式，又叫做多次/多重查询，也就是查询语句中嵌套着另外一个查询语句。
+查询语句的语法格式：
+  select [distinct] 字段名1 [as 别名1], 字段名2 [as 别名2], ... from 表名
+  [where 条件表达式]
+  [group by 字段名]
+  [having 条件表达式]
+  [order by 字段名/别名/位置编号 asc/desc];</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生表中年龄比'崔今生'小的学生信息，也就是出生日期比'崔今生'大的学生</span></span><br><span class="line"><span class="comment">-- 该需求涉及到student学生表</span></span><br><span class="line"><span class="comment">-- 涉及的字段有：borndate出生日期,  studentname学生姓名</span></span><br><span class="line"><span class="comment">-- 第一步：先查询学生表中'崔今生'的出生日期   '1990-01-05'</span></span><br><span class="line"><span class="keyword">select</span> to_char(borndate, <span class="string">'yyyy-mm-dd'</span>) 出生日期 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentname = <span class="string">'崔今生'</span>;</span><br><span class="line"><span class="comment">-- 第二步：再查询学生表中出生日期大于'崔今生'出生日期的学生信息</span></span><br><span class="line"><span class="keyword">select</span> to_char(borndate, <span class="string">'yyyy-mm-dd'</span>) 出生日期 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> borndate &gt; <span class="keyword">to_date</span>(<span class="string">'1990-01-05'</span>, <span class="string">'yyyy-mm-dd'</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">-- 合并起来使用子查询一步到位</span></span><br><span class="line"><span class="keyword">select</span> to_char(borndate, <span class="string">'yyyy-mm-dd'</span>) 出生日期 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> borndate &gt; (<span class="keyword">select</span> borndate <span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">where</span> studentname = <span class="string">'崔今生'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生表中与'崔今生'在同一个年级的学生信息</span></span><br><span class="line"><span class="comment">-- 该需求涉及到student学生表</span></span><br><span class="line"><span class="comment">-- 涉及到的字段有：gradeid年级编号,  studentname学生姓名</span></span><br><span class="line"><span class="comment">-- 第一步：查询'崔今生'所在的年级编号  1</span></span><br><span class="line"><span class="keyword">select</span> gradeid <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentname = <span class="string">'崔今生'</span>;</span><br><span class="line"><span class="comment">-- 第二步：再查询与'崔今生'所在年级编号一样的学生信息</span></span><br><span class="line"><span class="keyword">select</span> studentname, gradeid <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> gradeid = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">-- 合并为子查询一步到位</span></span><br><span class="line"><span class="keyword">select</span> studentname, gradeid <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> gradeid = ( <span class="keyword">select</span> gradeid <span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">where</span> studentname = <span class="string">'崔今生'</span> );</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例分析："><a href="#案例分析：" class="headerlink" title="案例分析："></a>案例分析：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询'JavaSE'课程并且考试成绩为100分的学生信息</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：subject课程表， result成绩表, student学生表</span></span><br><span class="line"><span class="comment">--   其中subject课程表和result成绩表之间采用： subjectid课程编号关联</span></span><br><span class="line">       根据课程表中的名称可以查询到课程编号，根据课程编号可以查询到考试成绩</span><br><span class="line"><span class="comment">--   其中result成绩表和student学生表之间采用：studentno学号关联</span></span><br><span class="line">       根据考试成绩可以查询到学生编号，根据学生编号可以查到学生信息</span><br><span class="line"><span class="comment">-- 该需求涉及到的字段： </span></span><br><span class="line">     subject课程表中字段: subjectname课程名称、subjectid课程编号</span><br><span class="line">     result成绩表中字段： studentresult学生成绩、subjectid课程编号、studentno学生编号</span><br><span class="line">     student学生表中字段：studentno学生编号</span><br><span class="line"><span class="comment">-- 第一步：根据课程的名称查询对应的课程编号   1</span></span><br><span class="line"><span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>;</span><br><span class="line"><span class="comment">-- 第二步：根据课程的编号查询对应的考试成绩</span></span><br><span class="line">           根据考试成绩100和课程编号共同来查询学生的编号  'S1101019'</span><br><span class="line"><span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> subjectid = <span class="number">1</span> <span class="keyword">and</span> studentresult = <span class="number">100</span>;</span><br><span class="line"><span class="comment">-- 第三步：根据学生的编号来得到学生的信息</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno = <span class="string">'S1101019'</span>;  </span><br><span class="line">   </span><br><span class="line"><span class="comment">-- 合并为子查询的查询语句</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno = ( <span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line">	<span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">		<span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>) <span class="keyword">and</span> studentresult = <span class="number">100</span> );</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习：-1"><a href="#练习：-1" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询“青铜”阶段开设的课程</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：grade年级表  和  subject课程表</span></span><br><span class="line"><span class="comment">-- 其中grade年级表和subject课程表之间采用  gradeid年级编号 进行关联</span></span><br><span class="line"><span class="comment">-- 第一步：先查询'青铜'对应的年级编号  1</span></span><br><span class="line"><span class="keyword">select</span> gradeid <span class="keyword">from</span> grade</span><br><span class="line"><span class="keyword">where</span> gradename = <span class="string">'青铜'</span>;</span><br><span class="line"><span class="comment">-- 第二步：再根据年级编号查询对应的课程名称</span></span><br><span class="line"><span class="keyword">select</span> subjectname <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">where</span> gradeid = <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 合并为子查询</span></span><br><span class="line"><span class="keyword">select</span> subjectname <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">where</span> gradeid = ( <span class="keyword">select</span> gradeid <span class="keyword">from</span> grade</span><br><span class="line">	<span class="keyword">where</span> gradename = <span class="string">'青铜'</span> );</span><br><span class="line">	 </span><br><span class="line">	</span><br><span class="line"><span class="comment">-- 查询参加最近一次“HTML和CSS网页技术”考试成绩的学生的最高分和最低分</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：subject课程表  和 result成绩表</span></span><br><span class="line"><span class="comment">-- 其中课程表和成绩表之间采用  subjectid课程编号 进行关联</span></span><br><span class="line"><span class="comment">-- 第一步：查询'HTML和CSS网页技术'对应的课程编号  2</span></span><br><span class="line"><span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">where</span> subjectname = <span class="string">'HTML和CSS网页技术'</span>;</span><br><span class="line"><span class="comment">-- 第二步：查询课程编号对应的最近一次考试成绩，也就是考试日期最大的一次</span></span><br><span class="line"><span class="comment">-- '2010-03-01'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(examdate) <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> subjectid = <span class="number">2</span>;</span><br><span class="line"><span class="comment">-- 第三步：查询课程编号对应的考试成绩，并求出最高分和最低分</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(studentresult) 最高分, <span class="keyword">min</span>(studentresult) 最低分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> subjectid = <span class="number">2</span> <span class="keyword">and</span> examdate = <span class="keyword">to_date</span>(<span class="string">'2010-03-01'</span>, <span class="string">'yyyy-mm-dd'</span>);</span><br><span class="line"><span class="comment">-- 合并为子查询</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(studentresult) 最高分, <span class="keyword">min</span>(studentresult) 最低分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">	<span class="keyword">where</span> subjectname = <span class="string">'HTML和CSS网页技术'</span>) </span><br><span class="line">     <span class="keyword">and</span> examdate = ( <span class="keyword">select</span> <span class="keyword">max</span>(examdate) <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line">		<span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">		 <span class="keyword">where</span> subjectname = <span class="string">'HTML和CSS网页技术'</span> ) );</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例讲解："><a href="#案例讲解：" class="headerlink" title="案例讲解："></a>案例讲解：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询'JavaSE'课程所有考试成绩不及格的学员名单</span></span><br><span class="line"><span class="comment">-- 该需求涉及到： subject课程表   result成绩表   student学生表</span></span><br><span class="line"><span class="comment">--     其中subject课程表和result成绩表之间采用  subjectid课程编号 关联</span></span><br><span class="line"><span class="comment">--     其中result成绩表和student学生表之间采用  studentno学号  关联</span></span><br><span class="line"><span class="comment">-- 第一步：根据课程名称查询课程编号  1</span></span><br><span class="line"><span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>;</span><br><span class="line"><span class="comment">-- 第二步：根据课程编号和不及格的考试成绩来查询对应的学号 </span></span><br><span class="line"><span class="comment">-- S1200902002  S1101004 S1101010 S1101013 </span></span><br><span class="line"><span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> subjectid = <span class="number">1</span> <span class="keyword">and</span> studentresult &lt; <span class="number">60</span>;  </span><br><span class="line"><span class="comment">-- 第三步：根据学号查询学生名单</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno <span class="keyword">in</span> (<span class="string">'S1200902002'</span>,<span class="string">'S1101004'</span>,<span class="string">'S1101010'</span>,<span class="string">'S1101013'</span>);</span><br><span class="line"><span class="comment">-- 合并为子查询</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno <span class="keyword">in</span> (<span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line">	<span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">		<span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>) <span class="keyword">and</span> studentresult &lt; <span class="number">60</span>);</span><br><span class="line"><span class="comment">-- 当子查询的结果为多个时，可以使用in 或者使用 any</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno = <span class="keyword">any</span> (<span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line">	<span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">		<span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>) <span class="keyword">and</span> studentresult &lt; <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例讲解：-1"><a href="#案例讲解：-1" class="headerlink" title="案例讲解："></a>案例讲解：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询'JavaSE'课程最近一次考试的在读学生名单</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：subject课程表  result成绩表  student学生表</span></span><br><span class="line"><span class="comment">--    其中subject课程表和result成绩表之间采用   subjectid课程编号 关联</span></span><br><span class="line"><span class="comment">--    其中result成绩表和student学生表之间采用   studentno学号 关联</span></span><br><span class="line"><span class="comment">-- 根据课程名称查询到课程编号，根据课程编号和最近一次考试的日期来查询学号</span></span><br><span class="line"><span class="comment">-- 根据学号来查询学生表中学生姓名</span></span><br><span class="line"><span class="keyword">select</span> studentname <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> studentno <span class="keyword">in</span> ( <span class="keyword">select</span> studentno <span class="keyword">from</span> <span class="keyword">result</span> </span><br><span class="line">	<span class="keyword">where</span> examdate = ( <span class="keyword">select</span> <span class="keyword">max</span>(examdate) <span class="keyword">from</span> <span class="keyword">result</span> </span><br><span class="line">		<span class="keyword">where</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">			<span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>))</span><br><span class="line">	<span class="keyword">and</span> subjectid = ( <span class="keyword">select</span> subjectid <span class="keyword">from</span> subject</span><br><span class="line">		<span class="keyword">where</span> subjectname = <span class="string">'JavaSE'</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><pre><code>单表查询 - 主要指select查询语句中from关键字后面只跟一个表名的形式
+多表查询 - 主要指select查询语句中from关键字后面跟着多个表名的形式
+        - 也就是说同时查询的数据来自于多张表
+
+(1)内连接
+所谓内连接就是指使用两张表都有的字段和关系运算符进行匹配，从而得到两张表都有数据内容组成的结果集。   
+内连接的语法格式一(老版)：
+    select [表名1.]字段名1, [表名2.]字段名2, ... 
+    from 表名1 [别名1], 表名2 [别名2], ...
+    where 表之间的关联条件; 
+内连接的语法格式二(新版):
+    select [表名1.]字段名1, [表名2.]字段名2, ...
+    from 表名1 [别名1] inner join 表名2[别名2]
+    on 表之间的关联条件;</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生的学号、学生的名字以及学生的考试成绩</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：student学生表   result成绩表</span></span><br><span class="line"><span class="comment">-- 其中student学生表和result成绩表之间采用  studentno学号 关联</span></span><br><span class="line"><span class="comment">--     studentno学号是两张表共有的字段，也就是通用列</span></span><br><span class="line"><span class="comment">--     studentname学生名称是 student学生表中的字段</span></span><br><span class="line"><span class="comment">--     studentresult学生成绩是 result成绩表中的字段</span></span><br><span class="line"><span class="comment">-- 等值连接</span></span><br><span class="line"><span class="keyword">select</span> student.studentno, studentname, studentresult <span class="keyword">from</span> student, <span class="keyword">result</span></span><br><span class="line"><span class="keyword">where</span> student.studentno = result.studentno;</span><br><span class="line"><span class="comment">-- 新版本的写法</span></span><br><span class="line"><span class="keyword">select</span> student.studentno, studentname, studentresult </span><br><span class="line"><span class="keyword">from</span> student <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">on</span> student.studentno = result.studentno;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 当内连接忘记指定表之间的关联条件时，得到 5456 条记录  笛卡尔成绩</span></span><br><span class="line"><span class="comment">-- 就是该方式会使用第一张表中的每一条数据与第二张表中的每一条数据都组合一次</span></span><br><span class="line"><span class="keyword">select</span> student.studentno, studentname, studentresult <span class="keyword">from</span> student, <span class="keyword">result</span>;</span><br><span class="line"><span class="comment">-- 查询student表中的所有数据    62条</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br><span class="line"><span class="comment">-- 查询result表中的所有数据     88条</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">result</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习：-2"><a href="#练习：-2" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工编号，姓名以及所在部门名称</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：s_emp员工表 和  s_dept部门表</span></span><br><span class="line"><span class="comment">-- 两张表之间采用 部门编号 进行关联</span></span><br><span class="line"><span class="comment">-- 其中员工编号id 和 员工姓名last_name和first_name 来自于员工表</span></span><br><span class="line"><span class="comment">-- 其中部门名称name 来自于部门表</span></span><br><span class="line"><span class="keyword">select</span> s_emp.id, last_name||first_name, <span class="keyword">name</span> <span class="keyword">from</span> s_emp <span class="keyword">inner</span> <span class="keyword">join</span> s_dept</span><br><span class="line"><span class="keyword">on</span> s_emp.dept_id = s_dept.id; </span><br><span class="line">	</span><br><span class="line"><span class="comment">-- 查询部门编号以及该部门负责的区域名称</span></span><br><span class="line"><span class="comment">-- 该需求涉及到： s_dept部门表  和 s_region区域表</span></span><br><span class="line"><span class="comment">-- 两张表之间采用 区域编号  进行关联</span></span><br><span class="line"><span class="comment">-- 其中部门编号id来自于s_dept部门表</span></span><br><span class="line"><span class="comment">-- 其中区域名称name来自于s_region区域表</span></span><br><span class="line"><span class="keyword">select</span> s_dept.id, s_region.name <span class="keyword">from</span> s_dept <span class="keyword">inner</span> <span class="keyword">join</span> s_region</span><br><span class="line"><span class="keyword">on</span> s_dept.region_id = s_region.id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例讲解：-2"><a href="#案例讲解：-2" class="headerlink" title="案例讲解："></a>案例讲解：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生名称、课程名称以及考试成绩</span></span><br><span class="line"><span class="comment">-- 该需求涉及到：student学生表、 subject课程表、result成绩表</span></span><br><span class="line"><span class="comment">-- 其中student学生表 和 result成绩表之间采用  学号studentno 进行关联</span></span><br><span class="line"><span class="comment">-- 其中result成绩表 和 subject课程表之间采用  课程编号subjectid进行关联</span></span><br><span class="line"><span class="comment">-- 其中学生名称studentname来自于student学生表</span></span><br><span class="line"><span class="comment">-- 其中课程名称subjectname来自于subject课程表</span></span><br><span class="line"><span class="comment">-- 其中考试成绩studentresult来自于result成绩表</span></span><br><span class="line"><span class="keyword">select</span> studentname, subjectname, studentresult </span><br><span class="line"><span class="keyword">from</span> (student <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">result</span> <span class="keyword">on</span> student.studentno = result.studentno) </span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> subject <span class="keyword">on</span> result.subjectid = subject.subjectid;</span><br><span class="line"><span class="comment">-- 老版本的写法</span></span><br><span class="line"><span class="keyword">select</span> studentname, subjectname, studentresult</span><br><span class="line"><span class="keyword">from</span> student, <span class="keyword">result</span>, subject</span><br><span class="line"><span class="keyword">where</span> student.studentno = result.studentno </span><br><span class="line"><span class="keyword">and</span> result.subjectid = subject.subjectid;</span><br></pre></td></tr></table></figure>
+
+<h2 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h2><pre><code>-- 查询和Ben一个部门的员工的id，first_name,dept_id,salary信息
+-- 显示所有工资超过Ben的员工的信息，包括：id,first_name,salary
+-- 显示工资高于全公司平均工资的员工信息，包括id,first_name,salary
+-- 显示工资高于部门id=43的平均工资 的员工信息，包括id,first_name,salary
+-- 显示所有工资等于 部门43的所有员工 的信息，包括id,first_name,salary
+-- 返回管理者的信息，id,first_name,salary，也就是id号和manager_id相同
+-- 显示所有工资大于 部门43的任意员工 的信息，包括id,first_name,salary
+-- 显示平均工资 比部门id=33高的 部门id和平均工资
+-- 查询员工编号、员工姓名、员工薪水、薪水等级
+-- 查询员工编号、员工姓名、领导编号、领导姓名
+-- 查询年级编号为1的年级名称、科目名称及学时
+-- 查询学生学号、姓名、考试科目名称及成绩
+-- 查询参加“JavaSE”考试的学生姓名、成绩、考试日期</code></pre>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            chen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>Snape’s new life-IT</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/索引-oracle/">索引_oracle</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/9连接池、数据库优化/">9连接池、数据库优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/8SQL注入、JDBC事务/">8SQL注入、JDBC事务</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/7数据库高级特性、JDBC/">7数据库高级特性、JDBC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/6PLSQL/">6PLSQL</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/5数据库特性/">5数据库特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/4子查询、多表查询/">4子查询、多表查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/3select高级查询/">3select高级查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/2select查询基础/">2select查询基础</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/1数据库、DDL、DML/">1数据库、DDL、DML</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/10访问控制、final、多态抽象类/">10访问控制、final、多态抽象类</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/14List集合/">14List集合</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/20常用设计模式、基础算法/">20常用设计模式、基础算法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/3字符类型、运算符/">3字符类型、运算符</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/5循环结构、一维数组/">5循环结构、一维数组</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/8SQL注入、JDBC事务/">8SQL注入、JDBC事务</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/索引-oracle/">索引_oracle</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/4子查询、多表查询/">4子查询、多表查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/5数据库特性/">5数据库特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/6PLSQL/">6PLSQL</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/09/16/4子查询、多表查询/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/16/4子查询、多表查询/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/16/4子查询、多表查询/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/java/" style="font-size: 11.949631801266955px;" class="tag-cloud-link">java</a>
+    
+    <a href="/tags/访问控制、final、多态抽象类/" style="font-size: 14.425572347754697px;" class="tag-cloud-link">访问控制、final、多态抽象类</a>
+    
+    <a href="/tags/接口、内部类、object类/" style="font-size: 12.992439194322648px;" class="tag-cloud-link">接口、内部类、object类</a>
+    
+    <a href="/tags/包装类、数学处理类、String类、常量池/" style="font-size: 18.345234347293175px;" class="tag-cloud-link">包装类、数学处理类、String类、常量池</a>
+    
+    <a href="/tags/日期类、集合/" style="font-size: 8.866629051840365px;" class="tag-cloud-link">日期类、集合</a>
+    
+    <a href="/tags/泛型机制、Queue、Set、Map集合/" style="font-size: 14.604093445040554px;" class="tag-cloud-link">泛型机制、Queue、Set、Map集合</a>
+    
+    <a href="/tags/List集合/" style="font-size: 11.833376555229846px;" class="tag-cloud-link">List集合</a>
+    
+    <a href="/tags/异常机制、File类、IO流/" style="font-size: 16.99634947884172px;" class="tag-cloud-link">异常机制、File类、IO流</a>
+    
+    <a href="/tags/IO流、线程/" style="font-size: 17.211446975444012px;" class="tag-cloud-link">IO流、线程</a>
+    
+    <a href="/tags/快捷键/" style="font-size: 15.044726005714125px;" class="tag-cloud-link">快捷键</a>
+    
+    <a href="/tags/线程、网络编程/" style="font-size: 13.060767980241605px;" class="tag-cloud-link">线程、网络编程</a>
+    
+    <a href="/tags/tcp编程模型、常用设计原则、模式/" style="font-size: 17.324066908610252px;" class="tag-cloud-link">tcp编程模型、常用设计原则、模式</a>
+    
+    <a href="/tags/oracle/" style="font-size: 16.155441865718643px;" class="tag-cloud-link">oracle</a>
+    
+    <a href="/tags/DDL、DML/" style="font-size: 9.000902684460577px;" class="tag-cloud-link">DDL、DML</a>
+    
+    <a href="/tags/常用设计模式、基础算法/" style="font-size: 15.156189215498886px;" class="tag-cloud-link">常用设计模式、基础算法</a>
+    
+    <a href="/tags/基于tcp的在线考试系统/" style="font-size: 19.295478740480377px;" class="tag-cloud-link">基于tcp的在线考试系统</a>
+    
+    <a href="/tags/变量和注释、数据类型/" style="font-size: 15.226894952303306px;" class="tag-cloud-link">变量和注释、数据类型</a>
+    
+    <a href="/tags/字符类型、运算符/" style="font-size: 14.522601428237323px;" class="tag-cloud-link">字符类型、运算符</a>
+    
+    <a href="/tags/分支结构、循环结构/" style="font-size: 15.725942438913654px;" class="tag-cloud-link">分支结构、循环结构</a>
+    
+    <a href="/tags/循环结构、一维数组/" style="font-size: 19.194580128372227px;" class="tag-cloud-link">循环结构、一维数组</a>
+    
+    <a href="/tags/二维数组、面向对象/" style="font-size: 13.013050960222781px;" class="tag-cloud-link">二维数组、面向对象</a>
+    
+    <a href="/tags/成员方法、构造方法和方法重载/" style="font-size: 11.147571952583707px;" class="tag-cloud-link">成员方法、构造方法和方法重载</a>
+    
+    <a href="/tags/数据库高级特性、JDBC/" style="font-size: 11.383978679426347px;" class="tag-cloud-link">数据库高级特性、JDBC</a>
+    
+    <a href="/tags/SQL注入、JDBC事务/" style="font-size: 10.52531220040564px;" class="tag-cloud-link">SQL注入、JDBC事务</a>
+    
+    <a href="/tags/this、传参过程、递归、封装/" style="font-size: 13.167827876628479px;" class="tag-cloud-link">this、传参过程、递归、封装</a>
+    
+    <a href="/tags/static、单例、继承/" style="font-size: 10.175024055864391px;" class="tag-cloud-link">static、单例、继承</a>
+    
+    <a href="/tags/连接池、数据库优化/" style="font-size: 15.098978501081206px;" class="tag-cloud-link">连接池、数据库优化</a>
+    
+    <a href="/tags/索引/" style="font-size: 17.415486866608767px;" class="tag-cloud-link">索引</a>
+    
+    <a href="/tags/子查询、多表查询/" style="font-size: 8.848886417691013px;" class="tag-cloud-link">子查询、多表查询</a>
+    
+    <a href="/tags/数据库特性/" style="font-size: 12.801975084002912px;" class="tag-cloud-link">数据库特性</a>
+    
+    <a href="/tags/PLSQL/" style="font-size: 15.362470886667383px;" class="tag-cloud-link">PLSQL</a>
+    
+    <a href="/tags/查询基础/" style="font-size: 12.904607398762938px;" class="tag-cloud-link">查询基础</a>
+    
+    <a href="/tags/高级查询/" style="font-size: 15.791505115108501px;" class="tag-cloud-link">高级查询</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 chen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

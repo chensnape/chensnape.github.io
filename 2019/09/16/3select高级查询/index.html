@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="chen">
+    
+    <meta name="description" content="Snape&#39;s new life-IT">
+    
+    
+    
+    
+    
+    
+    <title>3select高级查询 | New Life</title>
+    <link href="”https://chensnape.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://chensnape.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">New Life</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/java/">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/oracle/">oracle</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/索引/">索引</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/java/">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/访问控制、final、多态抽象类/">访问控制、final、多态抽象类</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/接口、内部类、object类/">接口、内部类、object类</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://chensnape.github.io">New Life</a>
+        >
+        <span>3select高级查询</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/09/16/3select高级查询/">3select高级查询</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/oracle/">oracle</a>, 
+                
+                <a href="/tags/高级查询/">高级查询</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-09-16
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/09/16/3select高级查询/">3select高级查询</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-09-16
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/oracle/">oracle</a>, 
+                
+                <a href="/tags/高级查询/">高级查询</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="select高级查询"><a href="#select高级查询" class="headerlink" title="select高级查询"></a>select高级查询</h1><p>2019/9/3 15:19:13</p>
+<hr>
+<h2 id="select查询语句-重中之重"><a href="#select查询语句-重中之重" class="headerlink" title="select查询语句(重中之重)"></a>select查询语句(重中之重)</h2><h3 id="复习一下select查询的格式"><a href="#复习一下select查询的格式" class="headerlink" title="复习一下select查询的格式"></a>复习一下select查询的格式</h3><pre><code>select [distinct] 字段名1 [别名1], 字段名2 [别名2], ... from 表名
+[where 条件];</code></pre><h3 id="字段的排序"><a href="#字段的排序" class="headerlink" title="字段的排序"></a>字段的排序</h3><pre><code>select [distinct] 字段名1 [别名1], 字段名2 [别名2], ... from 表名
+[where 条件]
+[order by 字段名/别名/位置编号 asc/desc];</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的名字和薪水，并按照薪水进行升序排列</span></span><br><span class="line"><span class="keyword">select</span> first_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- asc可以省略，默认就是从小到大的升序排序</span></span><br><span class="line"><span class="keyword">select</span> first_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的姓和薪水，并按照姓进行升序排列  </span></span><br><span class="line"><span class="comment">-- 空值排列在最后</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> last_name;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的姓和薪水，并按照姓进行降序排列</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> last_name <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 经验分享：当降序排列时空值默认在最前面影响用户体验度，应该放在后面</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> last_name <span class="keyword">desc</span> <span class="keyword">nulls</span> <span class="keyword">last</span>;</span><br><span class="line"><span class="comment">-- 查询员工表中薪水小于1000的所有员工薪水并进行去重处理</span></span><br><span class="line"><span class="comment">-- 再按照薪水进行降序排列</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> salary <span class="string">"薪 水"</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">where</span> salary &lt; <span class="number">1000</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">desc</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的名字和薪水，将薪水起别名为Income，并按照别名降序</span></span><br><span class="line"><span class="keyword">select</span> first_name, salary <span class="string">"Income"</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="string">"Income"</span> <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工加上奖金后的年薪，别名为"年 薪"，并按照年薪升序</span></span><br><span class="line"><span class="keyword">select</span> first_name, salary, (salary+nvl(commission_pct,<span class="number">0</span>))*<span class="number">16</span> <span class="string">"年 薪"</span></span><br><span class="line"><span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="string">"年 薪"</span> <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的姓名，别名为"name"，并按照name进行降序排列</span></span><br><span class="line"><span class="keyword">select</span> last_name||first_name <span class="string">"name"</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="string">"name"</span> <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 常见的考点：本质上根本没有排序</span></span><br><span class="line"><span class="keyword">select</span> last_name||first_name <span class="string">"name"</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="string">'name'</span> <span class="keyword">desc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的姓和薪水信息，并按照位置编号0进行升序排序</span></span><br><span class="line"><span class="comment">-- Error: sql语句中下标通常都是从1开始</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">0</span> <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- 表示按照位置编号1开始排序，也就是按照last_name排序</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span> <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- 表示按照位置编号2开始排序，也就是按照salary排序</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">2</span> <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- 表示按照位置编号3开始排序  Error：位置编号必须在select列表范围</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">3</span> <span class="keyword">asc</span>;</span><br><span class="line"><span class="comment">-- 增加一个查询的信息</span></span><br><span class="line"><span class="keyword">select</span> last_name, salary, salary*<span class="number">16</span> <span class="string">"年 薪"</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">3</span> <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的部门编号、薪水以及编号，要求按照部门编号进行降序</span></span><br><span class="line"><span class="keyword">select</span> dept_id, salary, <span class="keyword">id</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_id <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的部门编号、薪水以及编号，部门编号降序，薪水降序</span></span><br><span class="line"><span class="comment">-- desc只对挨着的字段好使，若需要多个字段分别排序就需要单独加desc等</span></span><br><span class="line"><span class="comment">-- salary后面没有asc也没有desc，当部门编号相同时，薪水默认按照升序排列</span></span><br><span class="line"><span class="keyword">select</span> dept_id, salary, <span class="keyword">id</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_id <span class="keyword">desc</span>, salary;</span><br><span class="line"><span class="keyword">select</span> dept_id, salary, <span class="keyword">id</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_id <span class="keyword">desc</span>, salary <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的部门编号、薪水以及编号</span></span><br><span class="line"><span class="comment">-- 部门编号降序，薪水降序，员工编号升序</span></span><br><span class="line"><span class="keyword">select</span> dept_id, salary, <span class="keyword">id</span> <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_id <span class="keyword">desc</span>, salary <span class="keyword">desc</span>, <span class="keyword">id</span> <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的字符串函数"><a href="#常用的字符串函数" class="headerlink" title="常用的字符串函数"></a>常用的字符串函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询字符串的长度</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">length</span>(<span class="string">'hello'</span>) 计算字符串的长度 <span class="keyword">from</span> dual;   <span class="comment">-- 5</span></span><br><span class="line"><span class="comment">-- 实现将字符串所有字符串转换为大写</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">upper</span>(<span class="string">'hello'</span>) 将字符串转换为大写 <span class="keyword">from</span> dual;  <span class="comment">-- HELLO</span></span><br><span class="line"><span class="comment">-- 实现将字符串所有字符转换为小写</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">lower</span>(<span class="string">'HELLO'</span>) 将字符串转换为小写 <span class="keyword">from</span> dual;  <span class="comment">-- hello</span></span><br><span class="line"><span class="comment">-- 实现将字符串中首字母转换为大写</span></span><br><span class="line"><span class="keyword">select</span> initcap(<span class="string">'hello'</span>) 首字母转换为大写 <span class="keyword">from</span> dual; <span class="comment">-- Hello</span></span><br><span class="line"><span class="comment">-- 实现字符串中内容的截取，表示从下标2开始截取3个字符，下标从1开始</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">substr</span>(<span class="string">'hello'</span>, <span class="number">2</span>, <span class="number">3</span>) 截取字符串 <span class="keyword">from</span> dual;  <span class="comment">-- ell</span></span><br><span class="line"><span class="comment">-- 实现两个字符串之间的拼接</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="string">'hello'</span>, <span class="string">'world'</span>) 拼接字符串 <span class="keyword">from</span> dual; <span class="comment">-- helloworld</span></span><br><span class="line"><span class="comment">-- 实现字符串中内容的替换，表示将'e'替换为'E'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">replace</span>(<span class="string">'hello'</span>, <span class="string">'e'</span>, <span class="string">'E'</span>) 替换字符串 <span class="keyword">from</span> dual; <span class="comment">-- hEllo</span></span><br><span class="line"><span class="comment">-- 实现字符串中内容的替换，全部替换</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">replace</span>(<span class="string">'hehe'</span>, <span class="string">'e'</span>, <span class="string">'E'</span>) 替换字符串 <span class="keyword">from</span> dual;  <span class="comment">-- hEhE</span></span><br><span class="line"><span class="comment">-- 实现字符串中子字符串第一次出现的索引位置</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">instr</span>(<span class="string">'hello'</span>, <span class="string">'e'</span>) 查找下标 <span class="keyword">from</span> dual;          <span class="comment">-- 2</span></span><br><span class="line"><span class="comment">-- 实现字符串中前后两端空白字符的去除</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">trim</span>(<span class="string">'     hello     '</span>) 去除两端空白 <span class="keyword">from</span> dual;  <span class="comment">-- hello</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">length</span>(<span class="keyword">trim</span>(<span class="string">'     hello     '</span>)) 去除两端空白 <span class="keyword">from</span> dual; <span class="comment">-- 5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的数值函数"><a href="#常用的数值函数" class="headerlink" title="常用的数值函数"></a>常用的数值函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 实现数值18.56789后保留3位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.56789</span>, <span class="number">3</span>) 保留<span class="number">3</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.568</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留2位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.54789</span>, <span class="number">2</span>) 保留<span class="number">2</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.55</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留1位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.54789</span>, <span class="number">1</span>) 保留<span class="number">1</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.5</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留0位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.54789</span>, <span class="number">0</span>) 保留<span class="number">0</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 19</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留-1位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.54789</span>, <span class="number">-1</span>) <span class="string">"保留-1位小数"</span> <span class="keyword">from</span> dual;    <span class="comment">-- 20</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留-2位小数并进行四舍五入的功能</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="number">18.54789</span>, <span class="number">-2</span>) <span class="string">"保留2位小数"</span> <span class="keyword">from</span> dual;     <span class="comment">-- 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 实现数值18.56789后保留3位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.56789</span>, <span class="number">3</span>) 保留<span class="number">3</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.567</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留2位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.54789</span>, <span class="number">2</span>) 保留<span class="number">2</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.54</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留1位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.54789</span>, <span class="number">1</span>) 保留<span class="number">1</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18.5</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留0位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.54789</span>, <span class="number">0</span>) 保留<span class="number">0</span>位小数 <span class="keyword">from</span> dual;    <span class="comment">-- 18</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留-1位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.54789</span>, <span class="number">-1</span>) <span class="string">"保留-1位小数"</span> <span class="keyword">from</span> dual;    <span class="comment">-- 10</span></span><br><span class="line"><span class="comment">-- 实现数值18.54789后保留-2位小数并进行截取的功能</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">18.54789</span>, <span class="number">-2</span>) <span class="string">"保留-2位小数"</span> <span class="keyword">from</span> dual;     <span class="comment">-- 0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的日期函数"><a href="#常用的日期函数" class="headerlink" title="常用的日期函数"></a>常用的日期函数</h3><pre><code>to_char函数主要用于将数据中的日期类型数据获取出来并转换为字符串类型显示出来
+to_date函数主要用于将字符串类型的日期数据转换为日期类型数据再插入到数据库</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询当前的系统时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sysdate</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间对应的昨天</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sysdate</span><span class="number">-1</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间对应的前天</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sysdate</span><span class="number">-2</span> 前天 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间对应的明天</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sysdate</span>+<span class="number">1</span> 明天 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前的系统时间并按照年月日时分秒的格式显示出来</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">sysdate</span>, <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 当前系统时间 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的入职日期并按照年月日显示出来</span></span><br><span class="line"><span class="keyword">select</span> to_char(start_date, <span class="string">'yyyy-mm-dd'</span>) 入职日期 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 向员工表中插入'常宏'的信息并指定入职日期为当前系统时间</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s_emp (<span class="keyword">id</span>, last_name, first_name, start_date) <span class="keyword">values</span>(<span class="number">27</span>, <span class="string">'常'</span>, <span class="string">'宏'</span>, <span class="keyword">sysdate</span>);</span><br><span class="line"><span class="comment">-- 向员工表中插入'张衡'的信息并指定入职日期为当前系统时间</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s_emp (<span class="keyword">id</span>, last_name, first_name, start_date) <span class="keyword">values</span>(<span class="number">28</span>, <span class="string">'张'</span>, <span class="string">'衡'</span>, <span class="keyword">to_date</span>(<span class="string">'2019-08-30'</span>, <span class="string">'yyyy-mm-dd'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询当前系统时间的下一个月</span></span><br><span class="line"><span class="keyword">select</span> to_char(add_months(<span class="keyword">sysdate</span>, <span class="number">1</span>), <span class="string">'yyyy-mm-dd'</span>) 下一个月 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间的下两个月</span></span><br><span class="line"><span class="keyword">select</span> to_char(add_months(<span class="keyword">sysdate</span>, <span class="number">2</span>), <span class="string">'yyyy-mm-dd'</span>) 下两个月 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间的上一个月</span></span><br><span class="line"><span class="keyword">select</span> to_char(add_months(<span class="keyword">sysdate</span>, <span class="number">-1</span>), <span class="string">'yyyy-mm-dd'</span>) 上一个月 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间的上两个月</span></span><br><span class="line"><span class="keyword">select</span> to_char(add_months(<span class="keyword">sysdate</span>, <span class="number">-2</span>), <span class="string">'yyyy-mm-dd'</span>) 上两个月 <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间加1个月加1天加1小时加1分</span></span><br><span class="line"><span class="comment">-- add_months函数返回的是日期类型，也就是date类型</span></span><br><span class="line"><span class="keyword">select</span> to_char((add_months(<span class="keyword">sysdate</span>, <span class="number">1</span>) + <span class="number">1</span> + <span class="number">1</span>/<span class="number">24</span> + <span class="number">1</span>/<span class="number">24</span>/<span class="number">60</span>), <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询当前系统时间，并按照dd进行截取然后转换为字符串显示</span></span><br><span class="line"><span class="comment">-- 保留到dd，dd后面的时分秒全部丢弃</span></span><br><span class="line"><span class="keyword">select</span> to_char(trunc(<span class="keyword">sysdate</span>, <span class="string">'dd'</span>), <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 按天截取 </span><br><span class="line"><span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间，并按照mm进行截取然后转换为字符串显示</span></span><br><span class="line"><span class="keyword">select</span> to_char(trunc(<span class="keyword">sysdate</span>, <span class="string">'mm'</span>), <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 按月截取 </span><br><span class="line"><span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">-- 查询当前系统时间，并按照yyyy进行截取然后转换为字符串显示</span></span><br><span class="line"><span class="keyword">select</span> to_char(trunc(<span class="keyword">sysdate</span>, <span class="string">'yyyy'</span>), <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 按年截取 </span><br><span class="line"><span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习讲解："><a href="#练习讲解：" class="headerlink" title="练习讲解："></a>练习讲解：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 求当前月份的最后一分钟0秒表示的date数据</span></span><br><span class="line"><span class="comment">-- 2019-8-31  23:59:00</span></span><br><span class="line"><span class="keyword">select</span> to_char(trunc(add_months(<span class="keyword">sysdate</span>,<span class="number">1</span>), <span class="string">'mm'</span>) - <span class="number">1</span>/<span class="number">24</span>/<span class="number">60</span>, <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 本月最后一分钟</span><br><span class="line"><span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 求下个月的第三天的倒数十分钟0秒表示的date数据</span></span><br><span class="line"><span class="comment">-- 2019-9-03  23:50:00</span></span><br><span class="line"><span class="keyword">select</span> to_char(trunc(add_months(<span class="keyword">sysdate</span>,<span class="number">1</span>), <span class="string">'mm'</span>) + <span class="number">3</span> - <span class="number">1</span>/<span class="number">24</span>/<span class="number">60</span>*<span class="number">10</span>, <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) 下个月第三天</span><br><span class="line"><span class="keyword">from</span> dual; </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询s_emp表格(id,last_name,start_date),按照start_date排序 , </span></span><br><span class="line"><span class="comment">-- 查询的条件为: 入职日期在2018年1月1日 到2018年12月31日</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, last_name, start_date <span class="keyword">from</span> s_emp</span><br><span class="line"><span class="keyword">where</span> start_date <span class="keyword">between</span> <span class="keyword">to_date</span>(<span class="string">'2018-01-01'</span>, <span class="string">'yyyy-mm-dd'</span>) <span class="keyword">and</span> <span class="keyword">to_date</span>(<span class="string">'2018-12-31'</span>, <span class="string">'yyyy-mm-dd'</span>)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> start_date;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的聚合-多行-函数"><a href="#常用的聚合-多行-函数" class="headerlink" title="常用的聚合(多行)函数"></a>常用的聚合(多行)函数</h3><pre><code>单行函数 - 主要是将单条数据内容传入给该函数处理后的结果还是单条数据内容.
+聚合(多行)函数 - 主要是将多条数据内容输入该函数处理后的结果是单条数据内容。
+
+常用的聚合函数：
+   sum() - 主要用于实现多条数据累加和的计算，只能用于数值类型。
+   avg() - 主要用于实现多条数据平均值的计算，只能用于数值类型。
+   max() - 主要用于实现多条数据最大值的计算，可以处理任意类型的数据。
+   min() - 主要用于实现多条数据最小值的计算，可以处理任意类型的数据。
+   count() - 主要用于实现多条记录统计个数的计算，通常使用count(*)来实现。</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的总薪水</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(salary) 总薪水 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的平均薪水，要求采用四舍五入保留两位小数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="keyword">avg</span>(salary), <span class="number">2</span>) 平均薪水 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的平均奖金，要求采用四舍五入保留两位小数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="keyword">avg</span>(nvl(commission_pct,<span class="number">0</span>)), <span class="number">2</span>) 平均奖金 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的最高薪水</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(salary) 最高薪 <span class="keyword">from</span> s_emp; </span><br><span class="line"><span class="comment">-- 查询员工表中所有员工的最低薪水</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">min</span>(salary) 最低新 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询员工表中员工的个数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) 员工数量 <span class="keyword">from</span> s_emp;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询员工表中资历最老的员工并显示入职日期</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">min</span>(start_date), <span class="string">'yyyy-mm-dd'</span>) 资历最老 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询员工表中资历最小的员工并显示入职日期</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">max</span>(start_date), <span class="string">'yyyy-mm-dd'</span>) 资历最小 <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="comment">-- 查询成绩表中所有学生的总成绩</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(studentresult) 总成绩 <span class="keyword">from</span> <span class="keyword">result</span>;</span><br><span class="line"><span class="comment">-- 查询成绩表中所有学生的平均成绩</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>(<span class="keyword">avg</span>(studentresult), <span class="number">2</span>) 平均成绩 <span class="keyword">from</span> <span class="keyword">result</span>;</span><br><span class="line"><span class="comment">-- 查询成绩表中所有学生的最高分</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(studentresult) 最高分 <span class="keyword">from</span> <span class="keyword">result</span>;</span><br><span class="line"><span class="comment">-- 查询成绩表中所有学生的最低分</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">min</span>(studentresult) 最低分 <span class="keyword">from</span> <span class="keyword">result</span>;</span><br><span class="line"><span class="comment">-- 查询学生表中所有学生的人		</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><pre><code>select [distinct] 字段名1 [别名1], 字段名2 [别名2], ... from 表名
+[where 条件]
+[group by 字段名]
+[order by 字段名/别名/位置编号 asc/desc];</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生表中每个年级的总人数并显示出来，每...就表示按照...分组</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid; </span><br><span class="line"><span class="comment">-- 查询学生表中每种性别的总人数并显示出来</span></span><br><span class="line"><span class="keyword">select</span> sex 性别, <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sex;</span><br><span class="line"><span class="comment">-- 查询学生表中每个年级的总人数并显示出来，要求按照年级总人数降序排列</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">count</span>(*) <span class="keyword">desc</span>;</span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 总人数 <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 查询学生表中每个年级的总人数并显示出来，显示学生编号、年级编号、总人数</span></span><br><span class="line"><span class="comment">-- Error:studentno不能出现在select列表中</span></span><br><span class="line"><span class="comment">-- select列表中只能出现分组的字段以及聚合函数</span></span><br><span class="line"><span class="keyword">select</span> studentno, gradeid, <span class="keyword">count</span>(*) <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习：-1"><a href="#练习：-1" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询成绩表中每门课程的平均分并显示出来，要求平均分保留2位小数</span></span><br><span class="line"><span class="keyword">select</span> subjectid 课程编号, <span class="keyword">round</span>(<span class="keyword">avg</span>(studentresult), <span class="number">2</span>) 平均分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> subjectid;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询成绩表中每门课程的平均分并显示出来，要求按照平均分进行降序排列</span></span><br><span class="line"><span class="keyword">select</span> subjectid 课程编号, <span class="keyword">round</span>(<span class="keyword">avg</span>(studentresult), <span class="number">2</span>) 平均分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> subjectid</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 平均分 <span class="keyword">desc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询学生表中每个年级男女同学的人数并显示出来</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, sex 性别, <span class="keyword">count</span>(*) 人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid, sex;</span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 查询学生表中每个年级男女同学的人数并按照年级升序</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, sex 性别, <span class="keyword">count</span>(*) 人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid, sex</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> gradeid <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组之后的再次过滤"><a href="#分组之后的再次过滤" class="headerlink" title="分组之后的再次过滤"></a>分组之后的再次过滤</h3><pre><code>select [distinct] 字段名1 [别名1], 字段名2 [别名2], ... from 表名
+[where 条件]
+[group by 字段名]
+[having 条件]
+[order by 字段名/别名/位置编号 asc/desc];   </code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询每个年级的总人数且总人数要超过18人的才显示出来</span></span><br><span class="line"><span class="comment">-- Error: where子句中不能出现聚合函数</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号， <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">count</span>(*) &gt; <span class="number">18</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号， <span class="keyword">count</span>(*) 总人数 <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">18</span>;</span><br></pre></td></tr></table></figure>
+
+<pre><code>总结select查询语句一般的执行流程：
+from 表名 =&gt; where子句进行过滤 =&gt; group by子句进行分组 =&gt; having子句进行再次过滤 =&gt; select将数据取出来 =&gt; order by子句对取出来进行排序</code></pre><h3 id="练习：-2"><a href="#练习：-2" class="headerlink" title="练习："></a>练习：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 查询每个年级的总课时，并升序排列 （subject表）</span></span><br><span class="line"><span class="keyword">select</span> gradeid 年级编号, <span class="keyword">sum</span>(classhour) 总课时 <span class="keyword">from</span> subject</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> gradeid</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 总课时 <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询每个学员的平均分（result表）</span></span><br><span class="line"><span class="keyword">select</span> studentno 学号编号， <span class="keyword">avg</span>(studentresult) 平均分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> studentno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询每门课程的平均分，并降序排列（result表）</span></span><br><span class="line"><span class="keyword">select</span> subjectid 课程编号, <span class="keyword">round</span>(<span class="keyword">avg</span>(studentresult), <span class="number">2</span>) 平均分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> subjectid</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 平均分 <span class="keyword">desc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询每个学生的总分，并降序排列（result表）</span></span><br><span class="line"><span class="keyword">select</span> studentno 学生编号, <span class="keyword">sum</span>(studentresult) 总分 <span class="keyword">from</span> <span class="keyword">result</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> studentno</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 总分 <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>查询成绩表中学生编号、课程编号以及学生成绩信息，要求按照学生编号进行降序排列，若学生编号一样
+按照课程编号降序，若课程编号一样按照成绩升序排序
+查询s_emp表中所有first_name包含b或B的员工，显示id、first_name、salary信息
+显示s_emp表中first_name中4个字符以后的内容
+查询今天过生日的员工信息，假设入职日期就是出生日期</code></pre>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            chen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>Snape’s new life-IT</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/索引-oracle/">索引_oracle</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/9连接池、数据库优化/">9连接池、数据库优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/8SQL注入、JDBC事务/">8SQL注入、JDBC事务</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/7数据库高级特性、JDBC/">7数据库高级特性、JDBC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/6PLSQL/">6PLSQL</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/5数据库特性/">5数据库特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/4子查询、多表查询/">4子查询、多表查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/3select高级查询/">3select高级查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/2select查询基础/">2select查询基础</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/1数据库、DDL、DML/">1数据库、DDL、DML</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/13日期类、集合/">13日期类、集合</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/14List集合/">14List集合</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/17IO流、线程/">17IO流、线程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/1常用快捷键/">1常用快捷键</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/21基于tcp的在线考试系统/">21基于tcp的在线考试系统</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/4分支结构、循环结构/">4分支结构、循环结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/5循环结构、一维数组/">5循环结构、一维数组</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/16/7数据库高级特性、JDBC/">7数据库高级特性、JDBC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/9static、单例、继承/">9static、单例、继承</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/15/索引-javase/">索引_javase</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/09/16/3select高级查询/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/16/3select高级查询/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/16/3select高级查询/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/java/" style="font-size: 18.83781825214029px;" class="tag-cloud-link">java</a>
+    
+    <a href="/tags/访问控制、final、多态抽象类/" style="font-size: 8.951747496877001px;" class="tag-cloud-link">访问控制、final、多态抽象类</a>
+    
+    <a href="/tags/接口、内部类、object类/" style="font-size: 9.278277068813685px;" class="tag-cloud-link">接口、内部类、object类</a>
+    
+    <a href="/tags/包装类、数学处理类、String类、常量池/" style="font-size: 12.152361247153035px;" class="tag-cloud-link">包装类、数学处理类、String类、常量池</a>
+    
+    <a href="/tags/日期类、集合/" style="font-size: 12.419149093068956px;" class="tag-cloud-link">日期类、集合</a>
+    
+    <a href="/tags/泛型机制、Queue、Set、Map集合/" style="font-size: 8.709091551278657px;" class="tag-cloud-link">泛型机制、Queue、Set、Map集合</a>
+    
+    <a href="/tags/List集合/" style="font-size: 16.64098591382867px;" class="tag-cloud-link">List集合</a>
+    
+    <a href="/tags/异常机制、File类、IO流/" style="font-size: 12.088172445211573px;" class="tag-cloud-link">异常机制、File类、IO流</a>
+    
+    <a href="/tags/IO流、线程/" style="font-size: 17.99465096085909px;" class="tag-cloud-link">IO流、线程</a>
+    
+    <a href="/tags/快捷键/" style="font-size: 10.11467050911795px;" class="tag-cloud-link">快捷键</a>
+    
+    <a href="/tags/线程、网络编程/" style="font-size: 15.269869671509916px;" class="tag-cloud-link">线程、网络编程</a>
+    
+    <a href="/tags/tcp编程模型、常用设计原则、模式/" style="font-size: 8.706150012570752px;" class="tag-cloud-link">tcp编程模型、常用设计原则、模式</a>
+    
+    <a href="/tags/oracle/" style="font-size: 15.819236084242036px;" class="tag-cloud-link">oracle</a>
+    
+    <a href="/tags/DDL、DML/" style="font-size: 16.10779192791081px;" class="tag-cloud-link">DDL、DML</a>
+    
+    <a href="/tags/常用设计模式、基础算法/" style="font-size: 13.414861342540295px;" class="tag-cloud-link">常用设计模式、基础算法</a>
+    
+    <a href="/tags/基于tcp的在线考试系统/" style="font-size: 17.20122858655186px;" class="tag-cloud-link">基于tcp的在线考试系统</a>
+    
+    <a href="/tags/变量和注释、数据类型/" style="font-size: 8.232014419187493px;" class="tag-cloud-link">变量和注释、数据类型</a>
+    
+    <a href="/tags/字符类型、运算符/" style="font-size: 10.19155366726173px;" class="tag-cloud-link">字符类型、运算符</a>
+    
+    <a href="/tags/分支结构、循环结构/" style="font-size: 19.90000407742083px;" class="tag-cloud-link">分支结构、循环结构</a>
+    
+    <a href="/tags/循环结构、一维数组/" style="font-size: 9.787834174795297px;" class="tag-cloud-link">循环结构、一维数组</a>
+    
+    <a href="/tags/二维数组、面向对象/" style="font-size: 15.668679418040107px;" class="tag-cloud-link">二维数组、面向对象</a>
+    
+    <a href="/tags/成员方法、构造方法和方法重载/" style="font-size: 13.986560270170713px;" class="tag-cloud-link">成员方法、构造方法和方法重载</a>
+    
+    <a href="/tags/数据库高级特性、JDBC/" style="font-size: 17.65131912473121px;" class="tag-cloud-link">数据库高级特性、JDBC</a>
+    
+    <a href="/tags/SQL注入、JDBC事务/" style="font-size: 13.826000078915683px;" class="tag-cloud-link">SQL注入、JDBC事务</a>
+    
+    <a href="/tags/this、传参过程、递归、封装/" style="font-size: 16.452973903480938px;" class="tag-cloud-link">this、传参过程、递归、封装</a>
+    
+    <a href="/tags/static、单例、继承/" style="font-size: 8.81260190443998px;" class="tag-cloud-link">static、单例、继承</a>
+    
+    <a href="/tags/连接池、数据库优化/" style="font-size: 10.781688418721572px;" class="tag-cloud-link">连接池、数据库优化</a>
+    
+    <a href="/tags/索引/" style="font-size: 14.2532895497617px;" class="tag-cloud-link">索引</a>
+    
+    <a href="/tags/子查询、多表查询/" style="font-size: 11.770004230350818px;" class="tag-cloud-link">子查询、多表查询</a>
+    
+    <a href="/tags/数据库特性/" style="font-size: 16.788269907516458px;" class="tag-cloud-link">数据库特性</a>
+    
+    <a href="/tags/PLSQL/" style="font-size: 11.92600885609684px;" class="tag-cloud-link">PLSQL</a>
+    
+    <a href="/tags/查询基础/" style="font-size: 19.763719713754654px;" class="tag-cloud-link">查询基础</a>
+    
+    <a href="/tags/高级查询/" style="font-size: 19.4284594987383px;" class="tag-cloud-link">高级查询</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 chen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
